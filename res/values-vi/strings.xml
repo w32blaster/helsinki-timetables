@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+
+    <string name="app_name">Helsinki Timetables</string>
+    <string name="vehicle_type_bus">Xe Buyt</string>
+    <string name="vehicle_type_train">Tau </string>
+    <string name="vehicle_type_metro">Metro</string>
+    <string name="vehicle_type_tram">Xe Dien</string>
+    <string name="vehicle_type_farry">Tau Thuy</string>
+    <string name="vehicle_type_u_lines">Tuyen duong U</string>
+    <string name="bookmarks">Danh dau</string>
+    <string name="menu_update">Cap nhat</string>
+
+    <string name="header_trips_directions">Huong di cho %1$s</string>
+    <string name="header_trips">Tat ca cac chuyen cho %s</string>
+    <string name="header_stations" formatted="false">Tat ca cac diem dung cua tuyen %s %s</string>
+    <string name="header_times" formatted="false">Thoi gian bieu cho chuyen %s, diem dung %s</string>
+    <string name="header_one_trip">Tat ca cac diem dung cua chuyen %s</string>
+    <string name="cancel">Dung</string>
+    <string name="back">Tro lai</string>
+    <string name="next">Tiep theo</string>
+    <string name="finish">Ket thuc</string>
+    <string name="wizard">Thuat si</string>
+    <string name="wizard_page_one">Chao mung toi Thoi gian bieu HSL !</string>
+    <string name="wizard_page_one_text">Chao mung toi Thoi gian bieu HSL ! Huong dan nay se tro giup ban cach su dung .</string>
+    <string name="wizard_page_two_text">Dau tien, ban can tai du lieu ve thoi gian bieu phuong tien trong Helsinki. Hay con phuong thuc tai du lieu :</string>
+    <string name="wizard_page_two_radio_auto_text">&lt;b&gt;Tu dong.&lt;/&gt;&lt;br /&gt; De ung dung tu dong tai co so du lieu.</string>
+    <string name="wizard_page_two_radio_manu_text">&lt;b&gt;Thu cong.&lt;/&gt;&lt;br /&gt; Ban co the tai du lieu va them vao the nho SD.</string>
+    <string name="wizard_page_two">Nhap co so</string>
+    <string name="wizard_page_three">Dang nhap</string>
+    <string name="wizard_import_request_metadata">Yeu cau sieu du lieu&#8230;</string>
+    <string name="wizard_import_disk_space">Bo nho&#8230;</string>
+    <string name="wizard_import_downloaded">Da tai duoc : </string>
+    <string name="wizard_import_downloading">Dang tai&#8230;</string>
+    <string name="wizard_import_verify">Dang xac nhan&#8230;</string>
+    <string name="wizard_import_ok">[OK]</string>
+    <string name="wizard_import_error">[ERROR]</string>
+    <string name="wizard_import_finished_success">Viec nhap da hoan thanh. Ban co the tiep tuc su dung ung dung.</string>
+    <string name="wizard_import_finished_failure">Viec nhap ket thuc va bi loi. Nhap that bai.</string>
+    <string name="wizard_page_automatically_imprting_chosen">Ban da cho nhap du lieu mot cach tu dong. \n</string>
+    <string name="wizard_page_automatically_imprting">Ung dung se tai co so du lieu tu dong. Xin hay chac chan rang dien thoai cua ban duoc ket noi WiFi hoac mang vien thong, boi vi co so du lieu se kha nhieu va viec tai xuong se can nhieu dung luong va gay nghen mang.</string>
+    <string name="wizard_page_manally_imprting">Ban da chon nhap du lieu thu cong. &lt;br /&gt;&lt;br /&gt; Co nghia la, ban se tai tap tin tu trang web va them vao the nho SD. Xem vao trang : &lt;br /&gt;&lt;br /&gt; &lt;i&gt;http://hsl.2rooms.net/download.html</string>
+    <string name="wizard_page_three_button_start">Bat dau nhap du lieu</string>
+    <string name="wizard_page_four">Widget</string>
+    <string name="wizard_page_four_text">Dung quen su dung widget cua chung toi ! Day tien, ban nen tao mot trang danh dau truoc, roi them vao man hinh desktop.</string>
+    <string name="wizard_page_five">Huong dan ket thuc.</string>
+    <string name="wizard_page_five_finished">Ket thuc.\n\nBay gio ban co the su dung ung dung Thoi gian bieu Helsinki moi ngay.\n\nChuc may man !</string>
+    <string name="wizard_page_five_need_importing">Huong dan ket thuc.\n\nKhi ban an nut \"Ket thuc\" thi ung du se thoat ra. Sau do ban nen them tap tin du lieu vao the nho SD va lan khoi dong ung dung tieu theo se tu dong hien ra du lieu cho ban va ban co the su dung moi ngay.\n\nChuc may man !</string>
+    <string name="processing">Dang tien hanh&#8230;</string>
+    <string name="loading_descr">Dang truy van&#8230;</string>
+    <string name="mon_fri">Hai-Sau</string>
+    <string name="saturday">Bay</string>
+    <string name="sunday">Chu Nhat</string>
+    <string name="unzip_process_title">Giai nen&#8230;</string>
+    <string name="unzip_process_descr">Tim thay co so du lieu trong thu muc \"hsl\". Xin hay doi ung dung giai nen cac tap tin. Co the se mat mot chut thoi gian.</string>
+    <string name="unzip_result_fail_extract">Xin loi, qua trinh giai nen ket thuc voi loi. (that bai khi dang giai nen)</string>
+    <string name="unzip_result_fail_in">Xin loi, qua trinh giai nen ket thuc voi loi. (that bai khi dang mo tap tin)</string>
+    <string name="unzip_result_ok">Luu tru da duoc giai nen thanh cong.</string>
+    <string name="search_field_hint">Go de tim kiem</string>
+    <string name="search">Tim kiem</string>
+    <string name="stations_list_of_trips_header">Tat cac cac chuyen kha thi cho diem dung %s</string>
+    <string name="menu_add_bookmark">Them Danh dau moi</string>
+    <string name="menu_delete_bookmark">Xoa</string>
+    <string name="bookmarks_name">Cai dat ten cho Danh dau :</string>
+    <string name="bookmarks_image">Cai dat hinh anh, lien ket voi Danh dau nay :</string>
+    <string name="bookmarks_you_dont_have_bookmarks">Ban van khong co Danh dau nao. De them, xin cho \"Them Danh dau\" tu menu hoac an nut duoi day.</string>
+    <string name="dialog_confirm_delete_bookmarks">Xoa Danh dau \"%s\" ?</string>
+    <string name="yes">Co</string>
+    <string name="no">Khong</string>
+    <string name="widget_there_is_no_data">Ban khong co Danh dau nao duoc luu. Xin vao ung dung HSL va tao moi.</string>
+    <string name="widget_bookmark_is_empty">Khong co hanh trinh nao cho Danh dau nay vao thoi dien hien tai.</string>
+    <string name="err_msg_db_corrupted">Co so du lieu bi hong. Loi nay co the, neu co so du lieu duoc tai khong dung cach hoac the nho SD bi hu. Hay thu xoa du lieu va tai lai vao the nho SD 1 lan nua. Huong dan co the tim thay o :\n\nhttp://hsl.2rooms.net/download.html</string>
+    <string name="err_msg_db_file_adsent">Tap tin du lieu bi thieu.</string>
+    <string name="err_msg_no_sdcard">The nho SD chua duoc gan ket (mount).</string>
+    <string name="err_msg_cant_open_db">Khong the mo co so du lieu.</string>
+    <string name="err_msg_sql_error">Error o SQL</string>
+    <string name="error">Error</string>
+    <string name="metadata_header">Thong tin ve du lieu trong may.</string>
+    <string name="metadata_export_date">Thoi gian bieu tu :</string>
+    <string name="metadata_db_size">Kich co du lieu :</string>
+    <string name="metadata_err">Khong the hien thong tin du lieu. Xin kiem tra duong truyen Internet.</string>
+    <string name="metadata_warn_size_big">Canh bao! Co so du lieu hien tai co the bao gom thoi gian bieu mua he va mua dong. Ban duoc khuyen cao cap nhat du lieu vao tuan toi.</string>
+    <string name="unzip_result_fail_do_you_want">Ban co muon xoa tap tin bi loi tu the nho SD ?</string>
+</resources>

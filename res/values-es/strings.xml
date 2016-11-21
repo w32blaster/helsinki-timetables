@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+
+    <string name="app_name">Horarios Helsinki</string>
+    <string name="vehicle_type_bus">Bus</string>
+    <string name="vehicle_type_train">Tren</string>
+    <string name="vehicle_type_metro">Metro</string>
+    <string name="vehicle_type_tram">Tranvía</string>
+    <string name="vehicle_type_farry">Ferry</string>
+    <string name="vehicle_type_u_lines">Metro U</string>
+
+    <string name="header_trips">Todos los itinerarios para %s</string>
+    <string name="header_stations" formatted="false">Todas las  %s estaciones de la línea %s</string>
+    <string name="header_times" formatted="false">Horarios para viaje  %s, estación %s</string>
+    <string name="header_one_trip">Todas las estaciones para el viaje %s</string>
+    <string name="cancel">Cancelar</string>
+    <string name="back">Anterior</string>
+    <string name="next">Siguiente</string>
+    <string name="finish">Finalizar</string>
+    <string name="wizard">Asistente</string>
+    <string name="wizard_page_one">¡Bienvenido a la Tabla de Horarios de Helsinki!</string>
+    <string name="wizard_page_one_text">¡Bienvenido a la Tabla de Horarios de Helsinki! Este asistente lo ayudará a usar esta aplicación.</string>
+    <string name="wizard_page_two_text">En primer lugar precisará cargar la base de datos con todos los tiempos de rutas de Helsinki. Por favor, seleccione la forma de su preferencia para descargar los datos:</string>
+    <string name="wizard_page_two_radio_auto_text">&lt;b&gt;Automáticamente.&lt;/&gt;&lt;br /&gt; Deje que la aplicación descargue la base de datos por sí misma.</string>
+    <string name="wizard_page_two_radio_manu_text">&lt;b&gt;Manualmente.&lt;/&gt;&lt;br /&gt; Usted puede descargar la base de datos por su cuenta y guardarla en su tarjeta SD. </string>
+    <string name="wizard_page_two">Método de importación de datos</string>
+    <string name="wizard_page_three">Importando</string>
+    <string name="wizard_import_request_metadata">Solicitud de metadatos&#8230;</string>
+    <string name="wizard_import_disk_space">Espacio en disco&#8230;</string>
+    <string name="wizard_import_downloaded">Descargado: </string>
+    <string name="wizard_import_downloading">Descargando&#8230;</string>
+    <string name="wizard_import_verify">Verificando</string>
+    <string name="wizard_import_ok">[OK]</string>
+    <string name="wizard_import_error">[ERROR]</string>
+    <string name="wizard_import_finished_success">Importación finalizada exitosamente. Puede continuar utilizando la aplicación.</string>
+    <string name="wizard_import_finished_failure">Importación terminó con errores. Importación falló.</string>
+    <string name="wizard_page_automatically_imprting_chosen">Usted eligió importar la base de datos automáticamente. \n</string>
+	<string name="wizard_page_automatically_imprting">La aplicación descargará la base de datos por sí misma. Por favor, asegúrese que su teléfono está conectado a una red WiFi ó un acceso a internet móvil ilimitada ya que la base de datos es grande y su descarga  incrementará el tráfico de red.</string>
+    <string name="wizard_page_manally_imprting">Usted eligió importar la base de datos manualmente. Esto significa que usted descargará el archivo del sitio por su cuenta y lo copiará en su tarjeta SD. Por favor visite http://hsl.2rooms.net/download.html y siga las instrucciones.</string>
+    <string name="wizard_page_three_button_start">Comenzar importación</string>
+    <string name="wizard_page_four">Widget</string>
+    <string name="wizard_page_four_text">¡No se olvide de usar su widget! Primero usted debe crear un marcador nuevo, luego podrá agregarlo a su escritorio.</string>
+    <string name="wizard_page_five">Asistente finalizado.</string>
+    <string name="wizard_page_five_finished">Finalizado.\n\n Ahora puede utilizar la aplicación de  Horarios de Helsinki todos los días.\n\n ¡Buena suerte!</string>
+    <string name="wizard_page_five_need_importing">Asistente finalizado.\n\n Cuando presione el botón \"Terminar\" se cerrará la aplicación. Luego usted debería poner el archivo de base de datos en la tarjeta SD. Cuando reinicie la aplicación ésta se cargará automáticamente y usted podrá luego usarla todos los días. \n\n ¡Buena suerte!</string>
+    <string name="processing">Procesando&#8230;</string>
+    <string name="loading_descr">Ejecutando la consulta</string>
+    <string name="mon_fri">Lu-Vi</string>
+    <string name="saturday">Sáb</string>
+    <string name="sunday">Dom</string>
+    <string name="unzip_process_title">Extrayendo&#8230;</string>
+    <string name="unzip_process_descr">Base de datos encontrada en carpeta \"hsl\". Por favor, espere mientras la aplicación extrae los arhivos. El proceso puede tomar un tiempo.</string>
+    <string name="unzip_result_fail_extract">Disculpe, el proceso de extracción terminó con errores (falla durante la operación de extracción).</string>
+    <string name="unzip_result_fail_in">Disculpe, el proceso de extracción terminó con errores (falla durante la apertura del archivo).</string>
+    <string name="unzip_result_ok">Extracción de archivo exitosa.</string>
+    <string name="search_field_hint">Tipee para buscar</string>
+    <string name="search">Buscar</string>
+    <string name="stations_list_of_trips_header">Todos los viajes posibles para la estación %s</string>
+    <string name="menu_add_bookmark">Nuevo marcador</string>
+    <string name="menu_delete_bookmark">Eliminar</string>
+    <string name="menu_update">Actualizar</string>
+    <string name="bookmarks_name">Editar nombre del marcardor: </string>
+    <string name="bookmarks_image">Cambiar imágen para este marcador:</string>
+    <string name="bookmarks_you_dont_have_bookmarks">Usted aún no tiene marcadores. Para agregar uno por favor seleccione \"Agregar marcadores\" del menú ó presione el siguiente botón.</string>
+    <string name="dialog_confirm_delete_bookmarks">Eliminar el marcador %s?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="widget_there_is_no_data">Usted no tiene marcadores guardados. Por favor, vaya a la aplicación HSL y cree un marcador nuevo.</string>
+    <string name="widget_bookmark_is_empty">No hay viajes para este marcador por el momento.</string>
+    <string name="err_msg_db_corrupted">Base de datos corrupta. Este error puede ocurrir si la base de datos se descargó incorrectamente ó si su tarjeta SD está dañada. Intente remover de forma  manual el archivo de base datos y luego subirlo a su tarjeta SD nuevamente. Encontrará instrucciones aquí: http://hsl.2rooms.net/download.html</string>
+    <string name="err_msg_db_file_adsent">No se encuentra el archivo de base de datos</string>
+    <string name="err_msg_no_sdcard">La tarjeta SD no está montada</string>
+    <string name="err_msg_cant_open_db">No se puede abrir la base de datos</string>
+    <string name="err_msg_sql_error">Error de SQL</string>
+    <string name="error">Error</string>
+    <string name="unzip_result_fail_do_you_want">Do you want to delete the corrupted file from the SD-card?</string>
+</resources>

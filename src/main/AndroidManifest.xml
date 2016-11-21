@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      android:versionCode="33"
+      android:versionName="1.4.3.5"
+	package="com.redblaster.hsl.main">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-sdk android:minSdkVersion="4"/>
+    <supports-screens android:resizeable="true"
+                  android:smallScreens="true" 
+                  android:normalScreens="true" 
+                  android:largeScreens="true"/>
+
+    <application android:icon="@drawable/icon_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Light.NoTitleBar">
+        <activity android:name=".MainPage"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		<activity android:label="@string/app_name" android:name=".timetables.TimetableTripsView" android:configChanges="orientation|keyboardHidden" >
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".timetables.TimetableStationsView" android:configChanges="orientation|keyboardHidden" >
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".timetables.TimetableDirectionsView" android:configChanges="orientation|keyboardHidden" >
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".timetables.TimetableTimesView" android:configChanges="orientation|keyboardHidden" >
+		<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.SAMPLE_CODE" />
+		</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".timetables.TimetableOneTripView" android:configChanges="orientation|keyboardHidden" >
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>	
+		<activity android:label="@string/app_name" android:name=".wizard.WizardStepOne">
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".wizard.WizardStepTwo">
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".wizard.WizardStepThree" android:configChanges="keyboardHidden|orientation">
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".wizard.WizardStepFour">
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".wizard.WizardStepFive">
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".stations.StationsSearchList" >
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".stations.StationsListOfTrips">
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".stations.StationsTimesForSelectedTrip">
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".stations.StationsOneTripPoints"> 
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".bookmarks.BookmarksView">
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".bookmarks.BookmarksAddNewSelectStation">
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".bookmarks.BookmarksAddNewSelectTrip"> 
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".bookmarks.BookmarksAddNewSetCustoms" style="CustomSpinnerRadioTheme">
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".UpdateDatabasePage" android:configChanges="keyboardHidden|orientation">
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<activity android:label="@string/app_name" android:name=".bookmarks.BookmarksDeleteView">
+			<intent-filter>
+					<action android:name="android.intent.action.MAIN" />
+					<category android:name="android.intent.category.SAMPLE_CODE" />
+			</intent-filter>
+		</activity>
+		<receiver android:label="@string/app_name" android:name="com.redblaster.hsl.widget.HslWidgetProvider" android:icon="@drawable/icon_launcher"  android:configChanges="orientation|keyboardHidden" >
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+				<action android:name="com.redblaster.hsl.widget.HslWidgetProvider.ACTION_WIDGET_PREV" />
+				<action android:name="com.redblaster.hsl.widget.HslWidgetProvider.ACTION_WIDGET_REFRESH" />
+				<action android:name="com.redblaster.hsl.widget.HslWidgetProvider.ACTION_WIDGET_NEXT" />
+			</intent-filter>
+			<meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_provider" />
+		</receiver>
+    </application>
+</manifest>

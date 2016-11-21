@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/gradient"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+		<Button
+			android:id="@+id/headerWizardID"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:enabled="false"
+	    	android:background="@drawable/breadcrumbs_last_repeatable"
+	    	android:textColor="#FFFFFF" />
+	    <ScrollView
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="0dip"
+	    	android:layout_margin="10dp"
+	    	android:layout_weight="1" >
+			<LinearLayout
+				android:id="@+id/mainWizardContentID"
+				android:layout_width="fill_parent"
+	    		android:layout_height="0dip"
+	    		android:orientation="vertical">
+			</LinearLayout>
+		</ScrollView>
+		<LinearLayout
+			android:id="@+id/botStepsID"
+			android:layout_width="fill_parent"
+			android:orientation="horizontal"
+			android:layout_gravity="center"
+			android:gravity="center"
+			android:layout_margin="10dp"
+    		android:layout_height="30dp" />
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:padding="5dp"
+			android:background="@drawable/wizard_bottom_repeatable"
+			android:layout_height="wrap_content">
+				<Button
+					android:id="@+id/btnBackId"
+					android:layout_gravity="center_horizontal"
+					android:layout_height="wrap_content"
+					android:layout_width="fill_parent"
+					android:layout_weight="1"
+					android:text="@string/back" />
+				<Button
+					android:id="@+id/btnNextId"
+					android:layout_gravity="center_horizontal"
+					android:drawablePadding="10dp"
+					android:layout_height="wrap_content"
+					android:layout_width="fill_parent"
+					android:layout_weight="1"
+					android:text="@string/next"
+					android:drawableRight="@drawable/next"
+					/>
+		</LinearLayout>
+</LinearLayout>
