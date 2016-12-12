@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="table_stations_id" />
+    <item type="id" name="table_times_id" />
+    <item type="id" name="table_letters_id" />
+    <item type="id" name="table_directions_id" />
+    <item type="id" name="view_header_id" />
+    <item type="id" name="search_field_wrapper_id" />
+    <item type="id" name="list_stations_id" />
+    <item type="id" name="global_scroll_area_id" />
+    <item type="id" name="global_container_id" />
+    <item type="id" name="table_bookmarks_id" />
+    <item type="id" name="breadcrumbs_container_id" />
+    <item type="id" name="bookmark_name_id" />
+    <item type="id" name="checkbox_auto_id" />
+    <item type="id" name="checkbox_man_id" />
+    <item type="id" name="wizard_descr_label_id" />
+    <item type="id" name="wizard_start_btn_id" />
+    <item type="id" name="wizard_trace_request_label_id" />
+    <item type="id" name="wizard_trace_download_progress_id" />
+    <item type="id" name="wizard_trace_download_progress_lbl_id" />
+    <item type="id" name="wizard_trace_free_space_id" />
+    <item type="id" name="wizard_trace_verify_id" />
+    <item type="id" name="wizard_trace_unpack_id" />
+    <item type="id" name="wizard_trace_old_database_id" />
+    <item type="id" name="wizard_trace_old_bookmarks_id" />
+    <item type="id" name="wizard_trace_update_bookmarks_id" />
+    <item type="id" name="footer_id" />
+</resources>
