@@ -50,8 +50,7 @@ public class AbstractView extends Activity implements Runnable{
 	}
 	
     /**
-     * Set the current set of breadcrumbs without the first item 
-     * @param lst
+     * Set the current set of breadcrumbs without the first item
      */
     protected List<Breadcrumb> setListOfBreadcrumbs() {
     	return new ArrayList<Breadcrumb>();
