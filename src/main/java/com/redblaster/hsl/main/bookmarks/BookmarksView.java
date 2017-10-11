@@ -2,13 +2,10 @@ package com.redblaster.hsl.main.bookmarks;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.LayoutDirection;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -124,7 +121,8 @@ public class BookmarksView extends AbstractView {
         // Action button
         FloatingActionsMenu menu = new FloatingActionsMenu(this.getApplicationContext());
 
-        // delete button
+
+        // "delete" button
         FloatingActionButton deleteButton = new FloatingActionButton(this.getApplicationContext());
         deleteButton.setIcon(android.R.drawable.ic_menu_delete);
         deleteButton.setTitle(getResources().getString(R.string.menu_delete_bookmark));
@@ -139,9 +137,9 @@ public class BookmarksView extends AbstractView {
         });
         menu.addButton(deleteButton);
 
-        // add new bookmark button
+        // "add new bookmark" button
         FloatingActionButton addButton = new FloatingActionButton(this.getApplicationContext());
-        addButton.setIcon(android.R.drawable.ic_menu_add);
+        addButton.setIcon(android.R.drawable.ic_input_add);
         addButton.setTitle(getResources().getString(R.string.menu_add_bookmark));
         addButton.setOnClickListener(new OnClickListener() {
             @Override

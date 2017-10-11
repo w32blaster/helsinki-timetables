@@ -47,7 +47,7 @@ public class WizardStepThree extends AbstractWizardStep {
 	@Override
 	protected void getEventForBackButton(final Class<? extends AbstractWizardStep> backClazz) {
 		
-		if (traceBuilder.isRunning()){
+		if (null != traceBuilder && traceBuilder.isRunning()){
 			this.showConfirmDialogAndInterruptImporting(backClazz);
 		}
 		else {

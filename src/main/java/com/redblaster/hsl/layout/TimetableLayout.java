@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -45,16 +46,19 @@ public class TimetableLayout {
 	 * @param isLast - is this is the last arrow in the chain
 	 * @return
 	 */
-	private Button createBreadcrumbsArrow(boolean isLast) {
-		Button arrow = new Button(this.context);
-		if (isLast) {
-			arrow.setBackgroundResource(R.drawable.breadcrumbs_last_arrow);
-		}
-		else {
-			arrow.setBackgroundResource(R.drawable.breadcrumbs_middle_arrow);
-		}
+	private Button createBreadcrumbsArrow(final boolean isLast) {
+		final Button arrow = new Button(this.context);
+
+		final Drawable arrowIcon = isLast ?
+			this.context.getDrawable(R.drawable.breadcrumbs_last_arrow) :
+		 	this.context.getDrawable(R.drawable.breadcrumbs_middle_arrow);
+
+		arrow.setBackground(arrowIcon);
 		arrow.setPadding(0, 0, 0, 0);
 		arrow.setEnabled(false);
+
+		arrow.setLayoutParams(new TableRow.LayoutParams(arrowIcon.getIntrinsicWidth(), TableRow.LayoutParams.WRAP_CONTENT));
+
 		return arrow;
 	}
 	
