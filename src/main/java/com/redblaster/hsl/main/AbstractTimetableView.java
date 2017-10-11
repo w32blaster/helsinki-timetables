@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.redblaster.hsl.common.Constants;
@@ -176,12 +177,13 @@ public class AbstractTimetableView extends AbstractView {
 		SpannableString content = new SpannableString(strText);
 		content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
 		btn.setText(content);
-		btn.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+		//btn.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+		btn.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
 		
 		//set other params
 		btn.setTextColor(getResources().getColor(R.color.dark_blue));
 		btn.setBackgroundColor(Color.TRANSPARENT);
-		btn.setGravity(Gravity.LEFT);
+		//btn.setGravity(Gravity.LEFT);
 		btn.setPadding(10, 15, 10, 15);
 		
 		return btn;

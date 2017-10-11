@@ -258,6 +258,7 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 		
 		for (Cell cellWork : lstCells) {
 			if (!strHours.equals(this.getHours(cellWork.time))) {
+
 				// new line for the next hour
 				table.addView(row);
 				row = new TableRow(getApplicationContext());
