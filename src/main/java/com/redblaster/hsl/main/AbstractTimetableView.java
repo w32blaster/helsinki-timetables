@@ -184,7 +184,7 @@ public class AbstractTimetableView extends AbstractView {
 		btn.setTextColor(getResources().getColor(R.color.dark_blue));
 		btn.setBackgroundColor(Color.TRANSPARENT);
 		//btn.setGravity(Gravity.LEFT);
-		btn.setPadding(10, 15, 10, 15);
+		//btn.setPadding(10, 15, 10, 15);
 		
 		return btn;
     }

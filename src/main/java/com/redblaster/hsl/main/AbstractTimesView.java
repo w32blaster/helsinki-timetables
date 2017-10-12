@@ -1,13 +1,9 @@
 package com.redblaster.hsl.main;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.database.Cursor;
 import android.database.SQLException;
 import android.graphics.Typeface;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -19,6 +15,11 @@ import com.redblaster.hsl.common.Constants;
 import com.redblaster.hsl.common.DBAdapterExternal;
 import com.redblaster.hsl.common.Utils;
 import com.redblaster.hsl.exceptions.DatabaseException;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.util.TypedValue.COMPLEX_UNIT_DIP;
 
 /**
  * This is abstract view of times. It shows table of times like reittiopas book has
@@ -46,9 +47,9 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 		linearLayout.addView(this.getHeaderPanelWithIco());
 		
 		TableLayout table = new TableLayout(getApplicationContext());
-		TableRow.LayoutParams tableParams = new TableRow.LayoutParams();
-		tableParams.setMargins(5, 10, 5, 10);
-		table.setLayoutParams(tableParams);
+        TableRow.LayoutParams tableParams = new TableRow.LayoutParams();
+        tableParams.setMargins(5, 10, 5, 10);
+        table.setLayoutParams(tableParams);
 		table.setId(R.id.table_stations_id);
 
 
@@ -91,11 +92,26 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 	@Override
 	protected void processTheLayoutOperations(Cursor curs) {
 		TableLayout table = (TableLayout) findViewById(R.id.table_stations_id);
-		String strStationName = null;
+
+		// allow all cells to be shrinked, except the first one (hour label)
+        table.setColumnShrinkable(0, false);
+		table.setColumnShrinkable(1, true);
+		table.setColumnShrinkable(2, true);
+		table.setColumnShrinkable(3, true);
+		table.setColumnShrinkable(4, true);
+		table.setColumnShrinkable(5, true);
+		table.setColumnShrinkable(6, true);
+		table.setColumnShrinkable(7, true);
+		table.setColumnShrinkable(8, true);
+		table.setColumnShrinkable(9, true);
+		table.setColumnShrinkable(10, true);
+
+        String strStationName = null;
 		curs.getCount();
-		
+
+		// layout for the row with subtitle, should be spanned across the row
 		final TableRow.LayoutParams trParams = new TableRow.LayoutParams();
-		trParams.span = Constants.RECORDS_PER_ROW;
+		trParams.span = 3;
 		trParams.topMargin = 20;
 		
 		if (null != curs) {
@@ -128,7 +144,6 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 						
 						if (isWorkday == 1) {
 							Button btn = getTableButton(this.getMinutes(strTime), -1L, null, this.getNextViewHeaderName(), -1L, null, -1L, strStationName, strTime, curs.getLong(nTripID), -1L);
-							btn.setGravity(Gravity.LEFT);
 							Cell cell = new Cell();
 							cell.btn = btn;
 							cell.time = strTime;
@@ -137,7 +152,6 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 						
 						if (isSat == 1) {
 							Button btn = getTableButton(this.getMinutes(strTime), -1L, null, this.getNextViewHeaderName(), -1L, null, -1L, strStationName, strTime, curs.getLong(nTripID), -1L);
-							btn.setGravity(Gravity.LEFT);
 							Cell cell = new Cell();
 							cell.btn = btn;
 							cell.time = strTime;
@@ -146,7 +160,6 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 						
 						if (isSun == 1) {
 							Button btn = getTableButton(this.getMinutes(strTime), -1L, null, this.getNextViewHeaderName(), -1L, null, -1L, strStationName, strTime, curs.getLong(nTripID), -1L);
-							btn.setGravity(Gravity.LEFT);
 							Cell cell = new Cell();
 							cell.btn = btn;
 							cell.time = strTime;
@@ -162,7 +175,7 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 						TableRow rowWork = new TableRow(getApplicationContext());					
 						TextView t = new TextView(getApplicationContext());
 						t.setText(R.string.mon_fri);
-						t.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17);
+						t.setTextSize(COMPLEX_UNIT_DIP, 17);
 						t.setTextColor(getResources().getColor(R.color.dark_gray));
 						
 						// set collSpan to this row cell
@@ -170,7 +183,7 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 						rowWork.addView(t);
 						table.addView(rowWork);
 						
-						this.addTableSegment(lstWorkdays, table, strNow);						
+						this.addTableSegment(lstWorkdays, table, strNow);
 					}
 					
 					// sat
@@ -178,7 +191,7 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 						TableRow rowSat = new TableRow(getApplicationContext());					
 						TextView ts = new TextView(getApplicationContext());
 						ts.setText(R.string.saturday);
-						ts.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17);
+						ts.setTextSize(COMPLEX_UNIT_DIP, 17);
 						ts.setTextColor(getResources().getColor(R.color.dark_gray));
 						
 						// set collSpan to this row cell
@@ -195,7 +208,7 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 						TableRow rowSun = new TableRow(getApplicationContext());					
 						TextView tsu = new TextView(getApplicationContext());
 						tsu.setText(R.string.sunday);
-						tsu.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 17);
+						tsu.setTextSize(COMPLEX_UNIT_DIP, 17);
 						tsu.setTextColor(getResources().getColor(R.color.dark_gray));
 						
 						// set collSpan to this row cell
@@ -203,7 +216,7 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 						rowSun.addView(tsu);					
 						table.addView(rowSun);
 						
-						this.addTableSegment(lstSun, table, strNow);						
+						this.addTableSegment(lstSun, table, strNow);
 					}
 				}
 				curs.close();
@@ -252,32 +265,33 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 	 * @param lstCells
 	 * @param table
 	 */
-	private void addTableSegment(List<Cell> lstCells, TableLayout table, String strNow) {
+	private void addTableSegment(final List<Cell> lstCells, TableLayout table, String strNow) {
 		String strHours = "";
 		TableRow row = new TableRow(getApplicationContext());
-		
-		for (Cell cellWork : lstCells) {
-			if (!strHours.equals(this.getHours(cellWork.time))) {
+
+        for (Cell cell : lstCells) {
+			if (!strHours.equals(this.getHours(cell.time))) {
 
 				// new line for the next hour
 				table.addView(row);
 				row = new TableRow(getApplicationContext());
-				strHours = this.getHours(cellWork.time);
+
+				strHours = this.getHours(cell.time);
 				TextView t = new TextView(getApplicationContext());
 				t.setText(strHours);
 				t.setGravity(Gravity.RIGHT);
 				t.setTypeface(null, Typeface.BOLD);
-				t.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-				t.setTextColor(getResources().getColor(R.color.gray));
+				t.setTextSize(COMPLEX_UNIT_DIP, 18);
+				t.setTextColor(getResources().getColor(R.color.dark_blue));
 				row.addView(t);
 			}
 			
-			if (isLaterThanCurrentTime(strNow, cellWork.time)) {
-				cellWork.btn.setTextColor(getResources().getColor(R.color.gray));
+			if (isLaterThanCurrentTime(strNow, cell.time)) {
+				cell.btn.setTextColor(getResources().getColor(R.color.gray));
 			}
-			
+
 			// minutes button
-			row.addView(cellWork.btn);
+            row.addView(cell.btn);
 		}
 		table.addView(row);
 	}

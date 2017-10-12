@@ -1,8 +1,5 @@
 package com.redblaster.hsl.main;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -27,6 +24,9 @@ import com.redblaster.hsl.common.Utils;
 import com.redblaster.hsl.exceptions.DatabaseException;
 import com.redblaster.hsl.layout.TimetableLayout;
 import com.redblaster.hsl.layout.items.Breadcrumb;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AbstractView extends Activity implements Runnable{
 	protected static int BREADCRUMBS_ACTUAL_HEIGHT = 0;
@@ -109,7 +109,7 @@ public class AbstractView extends Activity implements Runnable{
      * @return
      */
     public static final LinearLayout createTimetableLayout(Context context, Resources resources) {
-    	timetableLayoutBuilder = new TimetableLayout(context, resources, lstBreadcrumbs, goToMainPage);
+		timetableLayoutBuilder = new TimetableLayout(context, resources, lstBreadcrumbs, goToMainPage);
     	return timetableLayoutBuilder.build();
     }
     

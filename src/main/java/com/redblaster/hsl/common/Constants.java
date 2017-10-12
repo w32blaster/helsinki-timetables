@@ -76,10 +76,6 @@ public interface Constants {
 	short DOWNLOAD_AUTOMATICALLY = 1;
 	short DOWNLOAD_MANUALLY = 2;
 
-	int MENU_ADD_BOOKMARK = 1;
-	int MENU_DELETE_BOOKMARK = 2;
-	int MENU_UPDATE = 3;
-
 	String URL_SITE = "http://hsl.2rooms.net/downloads/";
 	String URL_METADATA_FILE = "version.xml";
 	String URL_ARCHIVE_URL = "ga/download.php?locale=%1$s&res=%2$dx%3$d";
