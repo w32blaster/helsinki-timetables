@@ -1,6 +1,5 @@
 package com.redblaster.hsl.main;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +9,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.redblaster.hsl.common.Constants;
 import com.redblaster.hsl.common.ErrorMessage;
 import com.redblaster.hsl.common.Utils;
@@ -28,13 +30,14 @@ import com.redblaster.hsl.layout.items.Breadcrumb;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractView extends Activity implements Runnable{
+public class AbstractView extends AppCompatActivity implements Runnable{
 	protected static int BREADCRUMBS_ACTUAL_HEIGHT = 0;
 	private static List<Breadcrumb> lstBreadcrumbs;
 	private static OnClickListener goToMainPage;
 	private static TimetableLayout timetableLayoutBuilder;
 	protected boolean isGrouped = false;
 	protected LinearLayout linearLayout;
+	protected CoordinatorLayout cl; // compatibility layout to attach some widgets from new Android
 	protected boolean isScrollable = true;
 	
 	protected static ProgressDialog pd;
@@ -64,15 +67,18 @@ public class AbstractView extends Activity implements Runnable{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        lstBreadcrumbs = this.setListOfBreadcrumbs();
+
+		cl = new CoordinatorLayout(this);
+
+		lstBreadcrumbs = this.setListOfBreadcrumbs();
         goToMainPage = this.getListenerGoToMainPage();
         isGrouped = _needToGroupTransportLines();
         
         linearLayout = createTimetableLayout(getApplicationContext(), getResources());
-        linearLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradient));
         
         LinearLayout linearLayoutContent = new LinearLayout(getApplicationContext());
+		linearLayoutContent.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+		linearLayoutContent.setGravity(Gravity.FILL);
         
         try {
 			this.addLayoutElements(linearLayoutContent);
@@ -92,8 +98,9 @@ public class AbstractView extends Activity implements Runnable{
         else {
         	linearLayout.addView(linearLayoutContent);
         }
-       
-        setContentView(linearLayout);
+
+        cl.addView(linearLayout);
+        setContentView(cl);
         
         if (isThreadUsed) {
             pd = ProgressDialog.show(this, null, getResources().getString(R.string.loading_descr), true, false);

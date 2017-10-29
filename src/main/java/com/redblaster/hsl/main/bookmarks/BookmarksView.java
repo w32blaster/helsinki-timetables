@@ -2,11 +2,15 @@ package com.redblaster.hsl.main.bookmarks;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -50,11 +54,12 @@ public class BookmarksView extends AbstractView {
      * the simple button to add new one
      */
     private void appendToLayoutTextAndButton(LinearLayout lLayoutBookmarks) {
+
         TextView t = new TextView(getApplicationContext());
         t.setText(R.string.bookmarks_you_dont_have_bookmarks);
         t.setGravity(Gravity.CENTER);
-        t.setTextColor(getResources().getColor(R.color.dark_gray));
-        LinearLayout.LayoutParams tlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        t.setTextColor(ContextCompat.getColor(this, R.color.dark_gray));
+        LinearLayout.LayoutParams tlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         tlp.setMargins(20, 20, 20, 20);
         t.setLayoutParams(tlp);
         lLayoutBookmarks.addView(t);
@@ -64,7 +69,7 @@ public class BookmarksView extends AbstractView {
         LinearLayout.LayoutParams blp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         blp.gravity = Gravity.CENTER;
         btn.setLayoutParams(blp);
-        btn.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.add), null, null, null);
+        btn.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(this, R.drawable.add), null, null, null);
         btn.setCompoundDrawablePadding(10);
         btn.setOnClickListener(new OnClickListener() {
 
@@ -75,6 +80,7 @@ public class BookmarksView extends AbstractView {
 
         });
         btn.setGravity(Gravity.CENTER);
+        btn.setBackgroundColor(ContextCompat.getColor(this, R.color.light_gray));
         lLayoutBookmarks.addView(btn);
     }
 
@@ -82,15 +88,13 @@ public class BookmarksView extends AbstractView {
      * {@inheritDoc}
      */
     @Override
-    protected void addLayoutElements(LinearLayout linearLayout) {
+    protected void addLayoutElements(LinearLayout outerLinearLayout) {
         super.isThreadUsed = false;
-
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
 
         LinearLayout lLayoutBookmarks = new LinearLayout(getApplicationContext());
         lLayoutBookmarks.setOrientation(LinearLayout.VERTICAL);
         lLayoutBookmarks.setId(R.id.table_bookmarks_id);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
         lp.setMargins(10, 10, 10, 10);
         lLayoutBookmarks.setLayoutParams(lp);
 
@@ -102,10 +106,14 @@ public class BookmarksView extends AbstractView {
 
         if (isBookmarksExist) {
             bookmarkDataProvider.renderCollectedBookmarks(lLayoutBookmarks);
-            this.addFloatingActionButton(linearLayout);
         }
         else {
             this.appendToLayoutTextAndButton(lLayoutBookmarks);
+        }
+
+        if (isBookmarksExist) {
+            // show the floating button when some bookmarks exist
+           this.addFloatingActionButton(super.cl);
         }
 
         linearLayout.addView(lLayoutBookmarks);
@@ -114,12 +122,18 @@ public class BookmarksView extends AbstractView {
     /**
      * Add floating button on layout
      *
-     * @param linearLayout
+     * @param relativeLayout
      */
-    private void addFloatingActionButton(final LinearLayout linearLayout) {
+    private void addFloatingActionButton(final CoordinatorLayout relativeLayout) {
 
         // Action button
         FloatingActionsMenu menu = new FloatingActionsMenu(this.getApplicationContext());
+
+        CoordinatorLayout.LayoutParams lp = new CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.WRAP_CONTENT, CoordinatorLayout.LayoutParams.WRAP_CONTENT);
+        lp.anchorGravity = Gravity.BOTTOM | Gravity.RIGHT | Gravity.END;
+        lp.gravity = Gravity.BOTTOM | Gravity.RIGHT | Gravity.END;
+
+        menu.setLayoutParams(lp);
 
 
         // "delete" button
@@ -149,7 +163,7 @@ public class BookmarksView extends AbstractView {
         });
         menu.addButton(addButton);
 
-        linearLayout.addView(menu);
+        relativeLayout.addView(menu);
     }
 
 

@@ -4,8 +4,8 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.view.Gravity;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -86,11 +86,15 @@ public class TimetableLayout {
 	 * @return
 	 */
 	public LinearLayout build() {
+
 		LinearLayout linear = new LinearLayout(this.context);
     	linear.setId(R.id.global_container_id);
-    	
+
+		linear.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+		linear.setGravity(Gravity.FILL);
+
 		linear.setOrientation(LinearLayout.VERTICAL);
-		linear.setBackgroundColor(Color.WHITE);
+
 
 		//Add a breadcrumbs panel
 		TableLayout breadcrumbsPanel = new TableLayout(this.context);

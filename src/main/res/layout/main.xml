@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@drawable/gradient"
+    android:background="@color/dark_white"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 	    <Button
@@ -44,12 +44,15 @@
 						android:id="@+id/TableRow02" 
 						android:layout_width="fill_parent" 
 						android:layout_height="wrap_content"
+						android:background="@android:color/transparent"
 						android:orientation="horizontal">
+
 							<Button
 								android:id="@+id/btnTramm"
 								style="@style/VehicleButton.Middle"
-								android:text="@string/vehicle_type_tram"
-								android:drawableTop="@drawable/button_tram" />
+								android:drawableTop="@drawable/button_tram"
+								android:elevation="0dp"
+								android:text="@string/vehicle_type_tram" />
 							<Button
 								android:id="@+id/btnFerry"
 								style="@style/VehicleButton.Middle"
@@ -65,6 +68,7 @@
 						android:id="@+id/TableRow03" 
 						android:layout_width="fill_parent" 
 						android:layout_height="wrap_content"
+						android:background="@android:color/transparent"
 						android:orientation="horizontal">
 							<Button
 								android:id="@+id/btnStations"

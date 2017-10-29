@@ -6,41 +6,42 @@
 	<style name="labelStyle">
 		<item name="android:textColor">#0d7eca</item>
 	</style>
-	
+
 	<style name="textSize">
 		<item name="android:textSize">14dp</item>
 	</style>
-	
+
 	<style name="WidgetBackground">
         <item name="android:background">@drawable/widget_bg</item>
     </style>
-    
+
     <style name="Text">
     	<item name="android:textColor">@color/dark_gray</item>
     </style>
-    
+
     <style name="Text.Loading">
         <item name="android:textSize">14dp</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
-    
+
     <style name="Text.Title">
         <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/dark_blue</item>
     </style>
-    
+
     <style name="Text.Time">
         <item name="android:textSize">12dp</item>
         <item name="android:paddingLeft">25dip</item>
     </style>
-    
+
     <style name="Text.Updated">
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/light_gray</item>
     </style>
-    
+
     <style name="VehicleButton">
+        <item name="android:background">@color/dark_white</item>
     	<item name="android:textColor">#1e385c</item>
     	<item name="android:layout_weight">1</item>
     	<item name="android:layout_width">fill_parent</item>
@@ -48,16 +49,16 @@
     	<item name="android:padding">10dp</item>
     	<item name="android:textStyle">bold</item>
     </style>
-    
+
     <style name="VehicleButton.Top">
-    	<item name="android:background">@drawable/delimeter_top</item>
+        <item name="android:background">@drawable/abc_btn_borderless_material</item>
     </style>
-    
+
     <style name="VehicleButton.Middle">
-    	<item name="android:background">@drawable/delimeter</item>
+        <item name="android:background">@drawable/abc_btn_borderless_material</item>
     </style>
-    
+
     <style name="VehicleButton.Bottom">
-    	<item name="android:background">@drawable/delimeter_bottom</item>
+        <item name="android:background">@drawable/abc_btn_borderless_material</item>
     </style>
 </resources>
