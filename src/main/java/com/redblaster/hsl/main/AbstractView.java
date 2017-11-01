@@ -19,7 +19,6 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.redblaster.hsl.common.Constants;
 import com.redblaster.hsl.common.ErrorMessage;
 import com.redblaster.hsl.common.Utils;

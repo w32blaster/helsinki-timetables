@@ -3,6 +3,7 @@ package com.redblaster.hsl.layout.items;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -64,9 +65,9 @@ public class Breadcrumb {
 		btnItem = new Button(this.context);
 		btnItem.setPadding(3, 0, 3, 0);
 		btnItem.setGravity(Gravity.CENTER);
-		btnItem.setTextColor(getResources().getColor(R.color.dark_blue));
+		btnItem.setTextColor(ContextCompat.getColor(this.context, R.color.dark_blue));
 		
-		Drawable icon = resources.getDrawable(this.drawableIcon);
+		Drawable icon = ContextCompat.getDrawable(this.context, this.drawableIcon);
 		
 		switch (position) {
 			case Constants.BREADCRUMBS_FIRST_ITEM:

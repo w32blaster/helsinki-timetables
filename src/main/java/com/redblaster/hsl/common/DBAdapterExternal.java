@@ -59,9 +59,13 @@ public class DBAdapterExternal
 				Log.e("ERROR", "No sd card");
 				throw new DatabaseException("No sd card", Constants.DB_ERROR_NO_SDCARD);
 			}
-			
+
+			if (!dbFile.canRead()) {
+                throw new DatabaseException("Can't read the database file (although it exists)", Constants.DB_ERROR_DATABASE_FILE_IS_ABSENT);
+            }
+
 			if (dbFile.exists()) {
-				db = SQLiteDatabase.openOrCreateDatabase(dbFile, null);
+				db = SQLiteDatabase.openDatabase(dbFile.getAbsolutePath(), null, db.OPEN_READONLY);
 			} else {
 				throw new DatabaseException("No db file. Path: " + dbFile.getAbsolutePath(), Constants.DB_ERROR_DATABASE_FILE_IS_ABSENT);
 			}

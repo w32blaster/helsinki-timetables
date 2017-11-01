@@ -20,6 +20,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
@@ -67,7 +68,7 @@ public class DBImporter {
 	 * Draws default text message and "Download" button.
 	 * 
 	 * @param lstItems
-	 * @param isUpdate - is this the Updating or the the first importing
+	 * @param isUpdating - is this the Updating or the the first importing
 	 */
 	public void init(List<View> lstItems, boolean isUpdating) {
 		this.isUpdate = isUpdating;
@@ -75,7 +76,7 @@ public class DBImporter {
 		if (!this.isUpdate) {
 			TextView text = new TextView(this.activity.getApplicationContext());
 			text.setText(R.string.wizard_page_automatically_imprting_chosen);
-			text.setTextColor(this.activity.getResources().getColor(R.color.dark_gray));
+			text.setTextColor(ContextCompat.getColor(this.activity, R.color.dark_gray));
 			text.setId(R.id.wizard_descr_label_id);
 			lstItems.add(text);
 		}
@@ -94,10 +95,14 @@ public class DBImporter {
 		this.btnStartImport = new Button(this.activity.getApplicationContext());
 		this.btnStartImport.setText(R.string.wizard_page_three_button_start);
 		this.btnStartImport.setOnClickListener(getOnClickListener());
-		this.btnStartImport.setCompoundDrawablesWithIntrinsicBounds(this.activity.getResources().getDrawable(R.drawable.download), null, null, null);
+		this.btnStartImport.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(this.activity, R.drawable.ic_download), null, null, null);
 		this.btnStartImport.setId(R.id.wizard_start_btn_id);
 		this.btnStartImport.setCompoundDrawablePadding(10);
-		LinearLayout.LayoutParams blp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        this.btnStartImport.setGravity(Gravity.CENTER);
+        this.btnStartImport.setBackgroundColor(ContextCompat.getColor(this.activity, R.color.light_gray));
+
+
+        LinearLayout.LayoutParams blp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 		blp.gravity = Gravity.CENTER;
 		blp.setMargins(10, 10, 10, 10);
 		this.btnStartImport.setLayoutParams(blp);
@@ -112,10 +117,10 @@ public class DBImporter {
 	 */
 	private LinearLayout createMetadataPreviewBlock() {
 		this.tableMetadata = new LinearLayout(this.activity.getApplicationContext());
-		this.tableMetadata.setBackgroundDrawable(this.activity.getResources().getDrawable(R.drawable.embedder_border));
+		this.tableMetadata.setBackground(ContextCompat.getDrawable(this.activity, R.drawable.embedder_border));
 		this.tableMetadata.setOrientation(LinearLayout.VERTICAL);
 		
-		LinearLayout.LayoutParams blp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+		LinearLayout.LayoutParams blp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 		blp.gravity = Gravity.CENTER;
 		blp.setMargins(0, 10, 0, 10);
 		this.tableMetadata.setLayoutParams(blp);
@@ -154,7 +159,7 @@ public class DBImporter {
 	private LinearLayout createRowForMetadataTable(String partOne, String partTwo, byte type) {
 		LinearLayout tr = new LinearLayout(this.activity.getApplicationContext());
 		tr.setOrientation(LinearLayout.HORIZONTAL);
-		LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+		LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 		tr.setLayoutParams(layoutParams);
 		
 		switch (type) {
@@ -176,7 +181,8 @@ public class DBImporter {
 				
 				// set icon "Database"
 				ImageView icon = new ImageView(this.activity.getApplicationContext());
-				icon.setImageDrawable(this.activity.getResources().getDrawable(R.drawable.database));
+				icon.setImageDrawable(ContextCompat.getDrawable(this.activity, R.drawable.ic_database));
+
 				tr.addView(icon);
 				
 				tr.addView(this.createTextView(partOne, false, true));
@@ -188,11 +194,11 @@ public class DBImporter {
 				
 				// set icon "Warning"
 				ImageView iconWarn = new ImageView(this.activity.getApplicationContext());
-				iconWarn.setImageDrawable(this.activity.getResources().getDrawable(R.drawable.warning));
+				iconWarn.setImageDrawable(ContextCompat.getDrawable(this.activity, R.drawable.ic_alert));
 				tr.addView(iconWarn);
 				
 				TextView txt = this.createTextView(partOne, false, true);
-				txt.setTextColor(this.activity.getResources().getColor(R.color.red_warn));
+				txt.setTextColor(ContextCompat.getColor(this.activity, R.color.red_warn));
 				tr.addView(txt);
 				break;
 			
@@ -201,7 +207,7 @@ public class DBImporter {
 				
 				// show error message
 				TextView t = this.createTextView(partOne, false, true);
-				t.setTextColor(this.activity.getResources().getColor(R.color.red));
+				t.setTextColor(ContextCompat.getColor(this.activity, R.color.red));
 				t.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
 				tr.addView(t);
 				break;
@@ -225,7 +231,7 @@ public class DBImporter {
 		TextView t = new TextView(this.activity.getApplicationContext());
 		t.setText(value);
 		t.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-		t.setTextColor(this.activity.getResources().getColor(R.color.dark_gray));
+		t.setTextColor(ContextCompat.getColor(this.activity, R.color.dark_gray));
 		t.setPadding(10, 0, 0, 0);
 		
 		if (isBold) {

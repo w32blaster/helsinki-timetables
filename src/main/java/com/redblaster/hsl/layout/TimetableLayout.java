@@ -99,7 +99,6 @@ public class TimetableLayout {
 		//Add a breadcrumbs panel
 		TableLayout breadcrumbsPanel = new TableLayout(this.context);
 		breadcrumbsPanel.setPadding(0, 0, 0, 0);
-		breadcrumbsPanel.setId(R.id.breadcrumbs_container_id);
 		TableRow tableRow = new TableRow(this.context);
 		tableRow.setPadding(0, 0, 0, 0);
 		this.addBreadCrumbsItemsToPanel(tableRow);

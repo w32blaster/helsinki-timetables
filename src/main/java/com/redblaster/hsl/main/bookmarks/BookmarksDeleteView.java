@@ -82,8 +82,8 @@ public class BookmarksDeleteView extends AbstractView {
 		table = new TableLayout(getApplicationContext());
 		TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams();
 		tableParams.setMargins(10, 20, 10, 10);
-		tableParams.width = TableRow.LayoutParams.FILL_PARENT;
-		tableParams.height = TableRow.LayoutParams.FILL_PARENT;
+		tableParams.width = TableRow.LayoutParams.MATCH_PARENT;
+		tableParams.height = TableRow.LayoutParams.MATCH_PARENT;
 		table.setLayoutParams(tableParams);
 		table.setId(R.id.table_directions_id);
 
@@ -102,14 +102,14 @@ public class BookmarksDeleteView extends AbstractView {
 			HashMap<Integer, Integer> setImages = bb.getSetImages();
 			
 			TableRow.LayoutParams lpr = new TableRow.LayoutParams();
-			lpr.width = TableRow.LayoutParams.FILL_PARENT;
-			lpr.height = TableRow.LayoutParams.FILL_PARENT;
+			lpr.width = TableRow.LayoutParams.MATCH_PARENT;
+			lpr.height = TableRow.LayoutParams.MATCH_PARENT;
 
-			TableRow.LayoutParams lpText = new TableRow.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+			TableRow.LayoutParams lpText = new TableRow.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 			lpText.weight = 1;
 			lpText.leftMargin = 10;
 			
-			TableRow.LayoutParams ilp = new TableRow.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+			TableRow.LayoutParams ilp = new TableRow.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 			ilp.topMargin = 13;
 			
 			String strBookmarkName = null;

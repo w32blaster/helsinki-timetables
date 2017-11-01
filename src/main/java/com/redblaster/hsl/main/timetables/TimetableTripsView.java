@@ -259,16 +259,7 @@ public class TimetableTripsView extends AbstractTimetableView {
         	}
         };
 	};
-	
-	/**
-	 * Returns list of all bookmarks.
-	 * Makes query to the internal database
-	 * @return 
-	 */
-	public Cursor getBookmarkCommonData(long bookmarkID) {
-		return db.getAllBookmarksData(bookmarkID);
-	}
-	
+
 	/**
 	 * Builds interface from database
 	 * 
@@ -354,30 +345,7 @@ public class TimetableTripsView extends AbstractTimetableView {
 		return result;
 	}
 	
-	private int addNewRow(String strMode, TableLayout table, int i, int rowsCnt, TableRow row) {
-		TextView header;
-		addEmptyCells(i, row); // fill the rest cells with the empty strings				
-		table.addView(row);
-		rowsCnt++;
-		
-		row = new TableRow(getApplicationContext());
 
-		header = new TextView(getApplicationContext());
-		header.setTextColor(Color.BLACK);
-		header.setText(strMode);
-		header.setTypeface(null, Typeface.BOLD);
-		
-		// set collSpan to this row cell
-		TableRow.LayoutParams trParams = new TableRow.LayoutParams();
-		trParams.span = Constants.RECORDS_PER_ROW;
-		trParams.topMargin = 20;
-		header.setLayoutParams(trParams);
-		
-		row.addView(header);
-		table.addView(row);
-		
-		return rowsCnt;
-	}
 	
 	/**
 	 * Adds empty cells to the table row
