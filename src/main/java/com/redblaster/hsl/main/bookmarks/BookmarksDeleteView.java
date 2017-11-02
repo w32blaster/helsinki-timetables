@@ -1,16 +1,13 @@
 package com.redblaster.hsl.main.bookmarks;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -18,13 +15,17 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.redblaster.hsl.common.LoadableSectorsBuilder;
 import com.redblaster.hsl.common.Constants;
 import com.redblaster.hsl.common.DBAdapter;
+import com.redblaster.hsl.common.LoadableSectorsBuilder;
 import com.redblaster.hsl.exceptions.DatabaseException;
 import com.redblaster.hsl.layout.items.Breadcrumb;
 import com.redblaster.hsl.main.AbstractView;
 import com.redblaster.hsl.main.R;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -93,6 +94,7 @@ public class BookmarksDeleteView extends AbstractView {
 		Cursor curs = db.getListOfAllBookmarks();
 		bookmarksCount = curs.getCount();
 		db.close();
+
 		if (null != curs) {
 			final int nBookmarkId = 0;
 			final int nBookmarkName = 1;
@@ -127,13 +129,15 @@ public class BookmarksDeleteView extends AbstractView {
 					
 					TextView t = new TextView(getApplicationContext());
 					t.setText(strBookmarkName);
-					t.setTextColor(getResources().getColor(R.color.dark_gray));
+					t.setTextColor(ContextCompat.getColor(this, R.color.dark_gray));
 					t.setLayoutParams(lpText);
 					tr.addView(t);
-					
-					Button btn = new Button(getApplicationContext());
-					btn.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.delete,0);
+
+					// button "Delete bookmark"
+                    ImageButton btn = new ImageButton(this);
+                    btn.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_delete));
 					btn.setOnClickListener(getOnClikListener(curs.getLong(nBookmarkId), strBookmarkName, tr));
+					btn.setBackgroundColor(ContextCompat.getColor(this, R.color.light_gray));
 					tr.addView(btn);
 					
 					table.addView(tr);
@@ -150,7 +154,7 @@ public class BookmarksDeleteView extends AbstractView {
 	/**
 	 * Prepares OnClick event for the button "delete"
 	 * 
-	 * @param id BookmarkID
+	 * @param bookmarkId BookmarkID
 	 * @param name bookmark name. It is used in confirm message
 	 * 
 	 * @return OnClickListener
@@ -200,7 +204,7 @@ public class BookmarksDeleteView extends AbstractView {
 	 * 
 	 * Deletes the bookmark from the database
 	 * 
-	 * @param bookmark Id
+	 * @param bookmarkId
 	 * @return result
 	 */
 	private boolean deleteTheBookmark(long bookmarkId) {
