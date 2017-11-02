@@ -1,8 +1,5 @@
 package com.redblaster.hsl.common;
 
-import java.io.File;
-import java.util.HashSet;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -11,6 +8,9 @@ import android.database.sqlite.SQLiteDatabaseCorruptException;
 import android.util.Log;
 
 import com.redblaster.hsl.exceptions.DatabaseException;
+
+import java.io.File;
+import java.util.HashSet;
 
 /**
  * Class-adaptor for working with a external read-only database, which must be found on SD-card.
@@ -61,7 +61,7 @@ public class DBAdapterExternal
 			}
 
 			if (!dbFile.canRead()) {
-                throw new DatabaseException("Can't read the database file (although it exists)", Constants.DB_ERROR_DATABASE_FILE_IS_ABSENT);
+                throw new DatabaseException("Can't read the database file (don't have permissions)", Constants.DB_ERROR_DATABASE_FILE_IS_ABSENT);
             }
 
 			if (dbFile.exists()) {

@@ -1,5 +1,12 @@
 package com.redblaster.hsl.common;
 
+import android.os.Environment;
+import android.os.Handler;
+import android.os.StatFs;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.WindowManager;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,13 +22,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
 import java.util.Map;
 
-import android.os.Environment;
-import android.os.Handler;
-import android.os.StatFs;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.WindowManager;
-
 /**
  * Set of all functionalities to download the Database from the HSL site.
  * @author Ilja Hamalainen
@@ -31,7 +31,7 @@ public class DatabaseDownloader {
 	private String STR_MD5;
 	private String STR_GZ_SIZE;
 	private String STR_DB_SIZE;
-	
+
 	/**
 	 * Loads metadata
 	 * 
@@ -85,7 +85,7 @@ public class DatabaseDownloader {
 		int count;
 		
         try {
-   
+
         	// get screen resolution
         	DisplayMetrics metrics = new DisplayMetrics();
         	windowManager.getDefaultDisplay().getMetrics(metrics);
@@ -136,7 +136,7 @@ public class DatabaseDownloader {
         }
         return true;
 	}
-	
+
 	/**
 	 * Checks CheckSum (MD5) for just downloaded archive to make sure, that whole file is intact
 	 * 

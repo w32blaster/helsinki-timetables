@@ -12,6 +12,10 @@ import android.widget.TextView;
 import com.redblaster.hsl.main.AbstractWizardStep;
 import com.redblaster.hsl.main.R;
 
+/**
+ * Page "don't forget to use our widget
+ *
+ */
 public class WizardStepFour extends AbstractWizardStep {
 	
 	/**

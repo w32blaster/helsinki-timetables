@@ -1,16 +1,8 @@
 package com.redblaster.hsl.common;
 
-import java.io.File;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
+import android.Manifest;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.graphics.Typeface;
@@ -20,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
@@ -37,6 +30,18 @@ import com.redblaster.hsl.exceptions.DatabaseException;
 import com.redblaster.hsl.main.R;
 import com.redblaster.hsl.main.bookmarks.migration.MigrationBookmark;
 
+import java.io.File;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import static com.redblaster.hsl.common.Constants.ALLOW_SD_CARD;
+
 /**
  * This class contains all drawing and import logic. Here is tracer (log displaying on screen current operation
  * and its result [OK] or [ERROR] and the download progress bar as well) and downloader.
@@ -49,8 +54,8 @@ import com.redblaster.hsl.main.bookmarks.migration.MigrationBookmark;
  *
  */
 public class DBImporter {
-	private Activity activity;
-	private LinearLayout mainContainer;
+	private final Activity activity;
+	private final LinearLayout mainContainer;
 	private boolean isUpdate;
 	private List<MigrationBookmark> lstBookmarks = null;
 	private LinearLayout tableMetadata;
@@ -314,6 +319,15 @@ public class DBImporter {
 
 			@Override
 			public void onClick(View v) {
+
+				// before begin, request user permissions to write to the SD card
+				if (ActivityCompat.checkSelfPermission(activity.getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+					// don't have permissions to access SD card. Show request and cancel so far. Later we can do it again.
+					ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, ALLOW_SD_CARD);
+					return;
+				}
+
 				LinearLayout container = getMainContainer();
 				container.removeAllViews();
 				setIsRunning(true);

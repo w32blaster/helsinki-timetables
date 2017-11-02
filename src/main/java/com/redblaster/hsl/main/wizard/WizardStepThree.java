@@ -1,19 +1,25 @@
 package com.redblaster.hsl.main.wizard;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.redblaster.hsl.common.Constants;
 import com.redblaster.hsl.common.DBImporter;
 import com.redblaster.hsl.main.AbstractWizardStep;
 import com.redblaster.hsl.main.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Import database (automatically download archive and unpack it)
+ *
+ */
 public class WizardStepThree extends AbstractWizardStep {
 	
 	private DBImporter traceBuilder;
@@ -39,6 +45,37 @@ public class WizardStepThree extends AbstractWizardStep {
 		}
 		
 		return lstItems;
+	}
+
+	/**
+	 * Get response from user about the system window "do you allow to write to the SD card?"
+	 *
+	 * @param requestCode
+	 * @param permissions
+	 * @param grantResults
+	 */
+	@Override
+	public void onRequestPermissionsResult(final int requestCode, final String permissions[], final int[] grantResults) {
+		switch (requestCode) {
+
+			case Constants.ALLOW_SD_CARD: {
+
+				// If request is cancelled, the result arrays are empty.
+				if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+					// permission was granted, yay! Do the
+					// contacts-related task you need to do.
+					Toast.makeText(this, "Granted! :)", Toast.LENGTH_SHORT).show();
+
+				} else {
+
+					// permission denied, boo! Disable the
+					// functionality that depends on this permission.
+					Toast.makeText(this, "Sorry, we need your permissions to write database to the SD card", Toast.LENGTH_LONG).show();
+				}
+				return;
+			}
+		}
 	}
 
 	/**

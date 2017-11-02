@@ -110,5 +110,7 @@ public interface Constants {
 	byte BYTE_ICON_DB = 2;
 	byte BYTE_ERR = 3;
 	byte BYTE_ICON_WARN = 4;
+
+	int ALLOW_SD_CARD = 1;
 	
 }
