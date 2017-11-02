@@ -23,7 +23,7 @@ import com.redblaster.hsl.main.R;
 
 /**
  * Helping class to create a loadable sector view. When it is too slowly to load all data in one query,
- * you may just split it and load only necessary.
+ * you may just split it and load only when necessary.
  *
  * This class must contain all functionality for rendering.
  * All business logic must be stored this class's client inside.

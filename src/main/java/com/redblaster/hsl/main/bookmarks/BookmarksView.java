@@ -67,7 +67,7 @@ public class BookmarksView extends AbstractView {
         LinearLayout.LayoutParams blp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         blp.gravity = Gravity.CENTER;
         btn.setLayoutParams(blp);
-        btn.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(this, R.drawable.add), null, null, null);
+        btn.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(this, R.drawable.ic_plus), null, null, null);
         btn.setCompoundDrawablePadding(10);
         btn.setOnClickListener(new OnClickListener() {
 
@@ -136,7 +136,8 @@ public class BookmarksView extends AbstractView {
 
         // "delete" button
         FloatingActionButton deleteButton = new FloatingActionButton(this.getApplicationContext());
-        deleteButton.setIcon(android.R.drawable.ic_menu_delete);
+        deleteButton.setBackgroundColor(ContextCompat.getColor(this, R.color.dark_gray));
+        deleteButton.setIcon(R.drawable.ic_delete);
         deleteButton.setTitle(getResources().getString(R.string.menu_delete_bookmark));
         deleteButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -151,7 +152,8 @@ public class BookmarksView extends AbstractView {
 
         // "add new bookmark" button
         FloatingActionButton addButton = new FloatingActionButton(this.getApplicationContext());
-        addButton.setIcon(android.R.drawable.ic_input_add);
+        addButton.setBackgroundColor(ContextCompat.getColor(this, R.color.dark_gray));
+        addButton.setIcon(R.drawable.ic_plus);
         addButton.setTitle(getResources().getString(R.string.menu_add_bookmark));
         addButton.setOnClickListener(new OnClickListener() {
             @Override

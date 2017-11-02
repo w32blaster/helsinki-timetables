@@ -8,6 +8,7 @@ import java.util.Map;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -154,20 +155,24 @@ public class BookmarksAddNewSetCustoms extends AbstractTimetableView {
 	private LinearLayout combineContentHolder() {
 		LinearLayout contantHolder = new LinearLayout(getApplicationContext());
 		contantHolder.setOrientation(LinearLayout.VERTICAL);
-		
+
+		// Label:
 		TextView tv = new TextView(getApplicationContext());
 		tv.setText(R.string.bookmarks_name);
-		tv.setTextColor(getResources().getColor(R.color.dark_gray));
+		tv.setTextColor(ContextCompat.getColor(this, R.color.dark_gray));
 		contantHolder.addView(tv);
-		
+
+		// Edit field:
 		ed = new EditText(getApplicationContext());
 		ed.setId(R.id.bookmark_name_id);
 		ed.setText(strBoomarkName);
+		ed.setTextColor(ContextCompat.getColor(this, R.color.dark_gray));
 		contantHolder.addView(ed);
-		
+
+		// Label "select the icon"
 		TextView tv2 = new TextView(getApplicationContext());
 		tv2.setText(R.string.bookmarks_image);
-		tv2.setTextColor(getResources().getColor(R.color.dark_gray));
+		tv2.setTextColor(ContextCompat.getColor(this, R.color.dark_gray));
 		contantHolder.addView(tv2);
 		
 		contantHolder.addView(getIconsSpinner());

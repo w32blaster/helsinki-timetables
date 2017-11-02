@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -193,15 +194,15 @@ public class BookmarksAddNewSelectTrip extends StationsListOfTrips {
 	 */
 	private LinearLayout combineFooter() {
 		LinearLayout footer = new LinearLayout(getApplicationContext());
-		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
 		footer.setLayoutParams(lp);
 		footer.setId(R.id.footer_id);
 		footer.setBackgroundResource(R.drawable.wizard_bottom_repeatable);
 		footer.setOrientation(LinearLayout.HORIZONTAL);
 		
-		// add two buttoms to footer "back" and "next"
-		LinearLayout.LayoutParams butLP = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+		// add two buttons to footer "back" and "next"
+		LinearLayout.LayoutParams butLP = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 		butLP.weight = 1;
 		butLP.setMargins(5, 5, 5, 5);
 		
@@ -209,16 +210,18 @@ public class BookmarksAddNewSelectTrip extends StationsListOfTrips {
 		btnBack.setText(R.string.back);
 		btnBack.setGravity(Gravity.CENTER);
 		btnBack.setLayoutParams(butLP);
+		btnBack.setBackgroundColor(ContextCompat.getColor(this, R.color.light_gray));
 		btnBack.setOnClickListener(this.getBackButtonListener());
 		footer.addView(btnBack);
 		
 		Button btnNext = new Button(getApplicationContext());
 		btnNext.setText(R.string.next);
-		btnNext.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(R.drawable.next), null);
+		btnNext.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(this, R.drawable.ic_arrow_right_bold), null);
 		btnNext.setGravity(Gravity.CENTER);
 		btnNext.setLayoutParams(butLP);
 		btnNext.setId(R.id.btnNextId);
 		btnNext.setEnabled(false);
+		btnNext.setBackgroundColor(ContextCompat.getColor(this, R.color.light_gray));
 		btnNext.setOnClickListener(this.getNextButtonListener());
 		
 		footer.addView(btnNext);
