@@ -264,6 +264,7 @@ public class LoadableSectorsBuilder {
 	private ImageView getImage(int nImage) {
 		ImageView image = new ImageView(this.context);
 		image.setImageResource(this.setImages.get(nImage));
+		image.setImageTintList(ContextCompat.getColorStateList(this.context, R.color.dark_white));
 
 		TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
 		lp.setMargins(10, 5, 10, 5);
@@ -279,8 +280,8 @@ public class LoadableSectorsBuilder {
 	 */
 	private Button getCollapsedIcon(OnClickListener listener) {
 		Button button = new Button(this.context);
-		Drawable icon = this.context.getResources().getDrawable(R.drawable.collapsed);
-		button.setBackgroundDrawable(icon);
+		Drawable icon = ContextCompat.getDrawable(this.context, (R.drawable.collapsed));
+		button.setBackground(icon);
 		button.setOnClickListener(listener);
 		
 		TableRow.LayoutParams lp = new TableRow.LayoutParams(icon.getIntrinsicWidth(), icon.getIntrinsicHeight());
@@ -297,7 +298,7 @@ public class LoadableSectorsBuilder {
 		TableRow firstRow = (TableRow) this.currentTable.getChildAt(0);
 		if (null != firstRow) {
 			Button btn = (Button) firstRow.getChildAt(firstRow.getChildCount() - 1);
-			btn.setBackgroundDrawable(this.context.getResources().getDrawable(R.drawable.expanded));
+			btn.setBackground(ContextCompat.getDrawable(this.context, R.drawable.expanded));
 			btn.setEnabled(false);
 			btn.setVisibility(View.INVISIBLE);
 		}

@@ -60,7 +60,7 @@ public class BookmarksAddNewSelectStation extends AbstractSearchStationView {
 	protected void addLayoutElements(LinearLayout linearLayout) throws DatabaseException {
 		
 		LinearLayout footer = new LinearLayout(getApplicationContext());
-		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
 		footer.setLayoutParams(lp);
 		footer.setId(R.id.footer_id);

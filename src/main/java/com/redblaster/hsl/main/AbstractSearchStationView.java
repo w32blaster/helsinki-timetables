@@ -3,6 +3,7 @@ package com.redblaster.hsl.main;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -56,15 +57,16 @@ public class AbstractSearchStationView extends AbstractTimetableView {
 	
 		EditText searchField = new EditText(getApplicationContext());
 		searchField.setHeight(LayoutParams.WRAP_CONTENT);
-		searchField.setWidth(LayoutParams.FILL_PARENT);
+		searchField.setWidth(LayoutParams.MATCH_PARENT);
 		searchField.addTextChangedListener(watcher);
+		searchField.setTextColor(ContextCompat.getColor(this, R.color.dark_gray));
 		searchField.setHint(R.string.search_field_hint);
 		
 		listView = new ListView(getApplicationContext());
 		listView.setId(R.id.list_stations_id);
 		listView.setBackgroundColor(Color.TRANSPARENT);
 		listView.setCacheColorHint(Color.TRANSPARENT);
-		listView.setDivider(getResources().getDrawable(R.drawable.list_devider));
+		listView.setDivider(ContextCompat.getDrawable(this, R.drawable.list_devider));
 		
 		listView.setOnItemClickListener(new OnItemClickListener() {
             
@@ -83,19 +85,19 @@ public class AbstractSearchStationView extends AbstractTimetableView {
 		db.open();
 		
 		curs = db.getAllStationsWithOneLetter(strSearchedText);
-		startManagingCursor(curs);
+		//startManagingCursor(curs);
 		
 		this.Load(curs);
 		
 		if (null != footer) {
 			// here we modify our layout to Relative. It it necessary to stick footer to the screen's bottom, even if listView is short.
 			RelativeLayout relLayout = new RelativeLayout(getApplicationContext());
-			relLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT));
+			relLayout.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 			
 			// add searching field, wrapped to the RelativeLayout
 			RelativeLayout relSearchLayout = new RelativeLayout(getApplicationContext());
 			relSearchLayout.setId(R.id.search_field_wrapper_id);
-			RelativeLayout.LayoutParams searchlp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);			
+			RelativeLayout.LayoutParams searchlp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 			relSearchLayout.setLayoutParams(searchlp);
 			searchField.setLayoutParams(searchlp);
 			relSearchLayout.addView(searchField);
@@ -105,7 +107,7 @@ public class AbstractSearchStationView extends AbstractTimetableView {
 			relLayout.addView(footer);
 			
 			// add list
-			RelativeLayout.LayoutParams llp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.FILL_PARENT);			
+			RelativeLayout.LayoutParams llp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
 			llp.addRule(RelativeLayout.BELOW, R.id.search_field_wrapper_id);
 			llp.addRule(RelativeLayout.ABOVE, R.id.footer_id);
 			listView.setLayoutParams(llp);
@@ -117,7 +119,7 @@ public class AbstractSearchStationView extends AbstractTimetableView {
 			// add searched textField to the layout
 			linearLayout.addView(searchField);
 			
-			LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+			LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 			llp.weight = 1;
 			listView.setLayoutParams(llp);
 			

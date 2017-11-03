@@ -193,7 +193,7 @@ public class BookmarksAddNewSetCustoms extends AbstractTimetableView {
 		footer.setOrientation(LinearLayout.HORIZONTAL);
 		footer.setId(R.id.footer_id);
 		
-		// add two buttoms to footer "back" and "next"
+		// add two butoms to footer "back" and "next"
 		LinearLayout.LayoutParams butLP = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 		butLP.weight = 1;
 		butLP.setMargins(5, 5, 5, 5);
@@ -225,9 +225,8 @@ public class BookmarksAddNewSetCustoms extends AbstractTimetableView {
 		HashMap<Integer, Integer> mapIcons = bookmarkBuilder.getSetImages();
 		
 		// fill the spinner with the list of icons
-		HashMap<String, Integer> map = null;
 		for (Map.Entry<Integer, Integer> entry : mapIcons.entrySet()) {
-	        map = new HashMap<String, Integer>();
+			HashMap<String, Integer> map = new HashMap();
 	        map.put(STR_KEY_ICONS, entry.getValue());
 	        map.put(STR_KEY_VALUES, entry.getKey());
 	        list.add(map);	    
@@ -256,6 +255,7 @@ public class BookmarksAddNewSetCustoms extends AbstractTimetableView {
 			
 		};
 		spinner.setOnItemSelectedListener(onSelectSpinner);
+
 		return spinner;
 	}
 	
@@ -326,11 +326,12 @@ public class BookmarksAddNewSetCustoms extends AbstractTimetableView {
 			
 			ImageView icon = (ImageView) convertView.findViewById(R.id.icon);
 			icon.setLayoutParams(butLP);
-			icon.setImageResource((Integer)list.get(position).get(STR_KEY_ICONS));
+			icon.setImageResource(list.get(position).get(STR_KEY_ICONS));
+			icon.setImageTintList(ContextCompat.getColorStateList(this.context, R.color.dark_gray));
 			
 			TextView tv = (TextView) convertView.findViewById(R.id.value);
 			tv.setText(list.get(position).get(STR_KEY_ICONS).toString());
-			
+
 	        return convertView;
 		}
 
