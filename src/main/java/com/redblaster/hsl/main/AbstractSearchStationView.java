@@ -55,9 +55,8 @@ public class AbstractSearchStationView extends AbstractTimetableView {
 		
 		linearLayout.setOrientation(LinearLayout.VERTICAL);
 	
-		EditText searchField = new EditText(getApplicationContext());
-		searchField.setHeight(LayoutParams.WRAP_CONTENT);
-		searchField.setWidth(LayoutParams.MATCH_PARENT);
+		EditText searchField = new EditText(this);
+        searchField.setWidth(LayoutParams.MATCH_PARENT);
 		searchField.addTextChangedListener(watcher);
 		searchField.setTextColor(ContextCompat.getColor(this, R.color.dark_gray));
 		searchField.setHint(R.string.search_field_hint);
