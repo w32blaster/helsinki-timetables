@@ -69,45 +69,45 @@ public class LoadableSectorsBuilder {
 	 */
 	private void buildIconsSet() {
 		setImages.put(-1, R.drawable.spacer);
-		setImages.put(1, R.drawable.bookmark_1);
-		setImages.put(2, R.drawable.bookmark_2);
-		setImages.put(3, R.drawable.bookmark_3);
-		setImages.put(4, R.drawable.bookmark_4);
-		setImages.put(5, R.drawable.bookmark_5);
-		
-		setImages.put(6, R.drawable.bookmark_6);
-		setImages.put(7, R.drawable.bookmark_7);
-		setImages.put(8, R.drawable.bookmark_8);
-		setImages.put(9, R.drawable.bookmark_9);
-		setImages.put(10, R.drawable.bookmark_10);
-		setImages.put(11, R.drawable.bookmark_11);
-		
-		setImages.put(12, R.drawable.bookmark_12);
-		setImages.put(13, R.drawable.bookmark_13);
-		setImages.put(14, R.drawable.bookmark_14);
-		setImages.put(15, R.drawable.bookmark_15);
-		setImages.put(16, R.drawable.bookmark_16);
-		
-		setImages.put(17, R.drawable.bookmark_17);
-		setImages.put(18, R.drawable.bookmark_18);
-		setImages.put(19, R.drawable.bookmark_19);
-		setImages.put(20, R.drawable.bookmark_20);
-		setImages.put(21, R.drawable.bookmark_21);
-		
-		setImages.put(22, R.drawable.bookmark_22);
-		setImages.put(23, R.drawable.bookmark_23);
-		setImages.put(24, R.drawable.bookmark_24);
-		setImages.put(25, R.drawable.bookmark_25);
-		setImages.put(26, R.drawable.bookmark_26);
-		
-		setImages.put(27, R.drawable.bookmark_27);
-		setImages.put(28, R.drawable.bookmark_28);
-		setImages.put(29, R.drawable.bookmark_29);
-		setImages.put(30, R.drawable.bookmark_30);
-		setImages.put(31, R.drawable.bookmark_31);
-		
-		setImages.put(32, R.drawable.bookmark_32);
-		setImages.put(33, R.drawable.bookmark_33);
+		setImages.put(1, R.drawable.ic_bookmark_1);
+		setImages.put(2, R.drawable.ic_bookmark_2);
+		setImages.put(3, R.drawable.ic_bookmark_3);
+		setImages.put(4, R.drawable.ic_bookmark_4);
+		setImages.put(5, R.drawable.ic_bookmark_5);
+
+		setImages.put(6, R.drawable.ic_bookmark_6);
+		setImages.put(7, R.drawable.ic_bookmark_7);
+		setImages.put(8, R.drawable.ic_bookmark_8);
+		setImages.put(9, R.drawable.ic_bookmark_9);
+		setImages.put(10, R.drawable.ic_bookmark_10);
+		setImages.put(11, R.drawable.ic_bookmark_11);
+
+		setImages.put(12, R.drawable.ic_bookmark_12);
+		setImages.put(13, R.drawable.ic_bookmark_13);
+		setImages.put(14, R.drawable.ic_bookmark_14);
+		setImages.put(15, R.drawable.ic_bookmark_15);
+		setImages.put(16, R.drawable.ic_bookmark_16);
+
+		setImages.put(17, R.drawable.ic_bookmark_17);
+		setImages.put(18, R.drawable.ic_bookmark_18);
+		setImages.put(19, R.drawable.ic_bookmark_19);
+		setImages.put(20, R.drawable.ic_bookmark_20);
+		setImages.put(21, R.drawable.ic_bookmark_21);
+
+		setImages.put(22, R.drawable.ic_bookmark_22);
+		setImages.put(23, R.drawable.ic_bookmark_23);
+		setImages.put(24, R.drawable.ic_bookmark_24);
+		setImages.put(25, R.drawable.ic_bookmark_25);
+		setImages.put(26, R.drawable.ic_bookmark_26);
+
+		setImages.put(27, R.drawable.ic_bookmark_27);
+		setImages.put(28, R.drawable.ic_bookmark_28);
+		setImages.put(29, R.drawable.ic_bookmark_29);
+		setImages.put(30, R.drawable.ic_bookmark_30);
+		setImages.put(31, R.drawable.ic_bookmark_31);
+
+		setImages.put(32, R.drawable.ic_bookmark_32);
+		setImages.put(33, R.drawable.ic_bookmark_33);
 	}
 	
 	/**
