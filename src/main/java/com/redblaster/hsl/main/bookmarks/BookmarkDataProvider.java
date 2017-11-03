@@ -354,7 +354,7 @@ public class BookmarkDataProvider {
 	/**
 	 * Renders all collected into the BookmarkBuilder bookmarks to the layer
 	 * 
-	 * @param LinearLayout - layout render bookmark to
+	 * @param layoutView - layout render bookmark to
 	 */
 	public void renderCollectedBookmarks(LinearLayout layoutView) {
 		bBuilder.appendView(layoutView);

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -32,7 +33,6 @@ import com.redblaster.hsl.main.R;
  */
 public class LoadableSectorsBuilder {
 	
-	private final int IMAGE_COLUMN_DEFAULT_WIDTH = 30;
 	private LinearLayout linearLayout;
 	private TableLayout currentTable;
 	private TableRow currentRow;
@@ -117,14 +117,13 @@ public class LoadableSectorsBuilder {
 	 * @param strHeaderName
 	 * @param nImage (if -1, then icon will be ignored)
 	 */
-	@SuppressLint("ResourceAsColor")
 	public Button addNewLoadableSection(boolean hasLeftRightMargin, String strHeaderName, int nImage, OnClickListener buttonLstnr) {
 		
 		this.currentRow = new TableRow(this.context);
-		this.currentRow.setBackgroundColor(R.color.dark_blue);
+		this.currentRow.setBackgroundColor(ContextCompat.getColor(this.context, R.color.dark_blue));
 		
 		// set layout params (margin)
-		TableLayout.LayoutParams params = new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT);
+		TableLayout.LayoutParams params = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT);
 		
 		if (hasLeftRightMargin) {
 			params.setMargins(5, 40, 5, 5);
@@ -266,7 +265,7 @@ public class LoadableSectorsBuilder {
 		ImageView image = new ImageView(this.context);
 		image.setImageResource(this.setImages.get(nImage));
 
-		TableRow.LayoutParams lp = new TableRow.LayoutParams(IMAGE_COLUMN_DEFAULT_WIDTH, TableRow.LayoutParams.WRAP_CONTENT);
+		TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
 		lp.setMargins(10, 5, 10, 5);
 		image.setLayoutParams(lp);
 		
