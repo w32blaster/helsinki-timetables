@@ -153,30 +153,30 @@ public class BookmarksAddNewSetCustoms extends AbstractTimetableView {
 	 * @return
 	 */
 	private LinearLayout combineContentHolder() {
-		LinearLayout contantHolder = new LinearLayout(getApplicationContext());
-		contantHolder.setOrientation(LinearLayout.VERTICAL);
+		LinearLayout contentHolder = new LinearLayout(getApplicationContext());
+		contentHolder.setOrientation(LinearLayout.VERTICAL);
 
 		// Label:
 		TextView tv = new TextView(getApplicationContext());
 		tv.setText(R.string.bookmarks_name);
 		tv.setTextColor(ContextCompat.getColor(this, R.color.dark_gray));
-		contantHolder.addView(tv);
+		contentHolder.addView(tv);
 
 		// Edit field:
 		ed = new EditText(getApplicationContext());
 		ed.setId(R.id.bookmark_name_id);
 		ed.setText(strBoomarkName);
 		ed.setTextColor(ContextCompat.getColor(this, R.color.dark_gray));
-		contantHolder.addView(ed);
+		contentHolder.addView(ed);
 
 		// Label "select the icon"
 		TextView tv2 = new TextView(getApplicationContext());
 		tv2.setText(R.string.bookmarks_image);
 		tv2.setTextColor(ContextCompat.getColor(this, R.color.dark_gray));
-		contantHolder.addView(tv2);
+		contentHolder.addView(tv2);
 		
-		contantHolder.addView(getIconsSpinner());
-		return contantHolder;
+		contentHolder.addView(getIconsSpinner());
+		return contentHolder;
 	}
 
 	/**
@@ -255,6 +255,7 @@ public class BookmarksAddNewSetCustoms extends AbstractTimetableView {
 			
 		};
 		spinner.setOnItemSelectedListener(onSelectSpinner);
+		spinner.setSelection(0);
 
 		return spinner;
 	}
@@ -327,7 +328,7 @@ public class BookmarksAddNewSetCustoms extends AbstractTimetableView {
 			ImageView icon = (ImageView) convertView.findViewById(R.id.icon);
 			icon.setLayoutParams(butLP);
 			icon.setImageResource(list.get(position).get(STR_KEY_ICONS));
-			icon.setImageTintList(ContextCompat.getColorStateList(this.context, R.color.dark_gray));
+			//icon.setImageTintList(ContextCompat.getColorStateList(this.context, R.color.dark_gray));
 			
 			TextView tv = (TextView) convertView.findViewById(R.id.value);
 			tv.setText(list.get(position).get(STR_KEY_ICONS).toString());
