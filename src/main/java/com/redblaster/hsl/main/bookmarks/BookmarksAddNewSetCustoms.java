@@ -131,14 +131,14 @@ public class BookmarksAddNewSetCustoms extends AbstractTimetableView {
 		
 		// here we modify our layout to Relative. It it necessary to stick footer to the screen's bottom, even if listView is short.
 		RelativeLayout relLayout = new RelativeLayout(getApplicationContext());
-		relLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT));
+		relLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
 
 		// add footer
 		relLayout.addView(combineFooter());
 		
 		// add content to relative layout
 		LinearLayout contantHolder = combineContentHolder();
-		RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.FILL_PARENT);			
+		RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
 		rlp.addRule(RelativeLayout.ABOVE, R.id.footer_id);
 		rlp.setMargins(10, 10, 10, 10);
 		contantHolder.setLayoutParams(rlp);
@@ -240,7 +240,7 @@ public class BookmarksAddNewSetCustoms extends AbstractTimetableView {
                 new int[] { R.id.icon, R.id.value });
 		spinner.setAdapter(adapter);
 		
-		LinearLayout.LayoutParams spinnerLP = new LinearLayout.LayoutParams(120, LinearLayout.LayoutParams.WRAP_CONTENT);
+		LinearLayout.LayoutParams spinnerLP = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 		spinner.setLayoutParams(spinnerLP);
 		OnItemSelectedListener onSelectSpinner = new OnItemSelectedListener() {
 
@@ -312,12 +312,10 @@ public class BookmarksAddNewSetCustoms extends AbstractTimetableView {
 			
 			if (superParent != null) {
 				ViewGroup.LayoutParams paramsPar = parent.getLayoutParams();
-				paramsPar.width = 100;
 				parent.setLayoutParams(paramsPar);
 				parent.requestLayout();
 				
 				ViewGroup.LayoutParams params = superParent.getLayoutParams();
-				params.width = 140;
 				superParent.setLayoutParams(params);
 				superParent.requestLayout();
 			}
@@ -346,12 +344,4 @@ public class BookmarksAddNewSetCustoms extends AbstractTimetableView {
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		Utils.log("Dialog is CALLED!");
-		return super.onCreateDialog(id);
-	}
 }
