@@ -1,7 +1,5 @@
 package com.redblaster.hsl.layout;
 
-import java.util.List;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -15,6 +13,8 @@ import android.widget.TableRow;
 import com.redblaster.hsl.common.Constants;
 import com.redblaster.hsl.layout.items.Breadcrumb;
 import com.redblaster.hsl.main.R;
+
+import java.util.List;
 
 /**
  * Class contains all logic for building the layout of Timetables View

@@ -2,22 +2,26 @@ package com.redblaster.hsl.main;
 
 import android.database.Cursor;
 import android.database.SQLException;
-import android.graphics.Typeface;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.view.Gravity;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.redblaster.hsl.common.Constants;
 import com.redblaster.hsl.common.DBAdapterExternal;
 import com.redblaster.hsl.common.Utils;
 import com.redblaster.hsl.exceptions.DatabaseException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import static android.util.TypedValue.COMPLEX_UNIT_DIP;
 
@@ -46,7 +50,7 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 		linearLayout.setOrientation(LinearLayout.VERTICAL);
 		linearLayout.addView(this.getHeaderPanelWithIco());
 		
-		TableLayout table = new TableLayout(getApplicationContext());
+		TableLayout table = new TableLayout(this);
         TableRow.LayoutParams tableParams = new TableRow.LayoutParams();
         tableParams.setMargins(5, 10, 5, 10);
         table.setLayoutParams(tableParams);
@@ -69,7 +73,7 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 	 * @param strVal
 	 * @return
 	 */
-	private String getHours(String strVal) {
+	private static String getHours(String strVal) {
 		if (strVal.length() == 3) strVal = Constants.STR_ZERO + strVal;
 		String strHrs = strVal.substring(0, 2);
 		int h = Integer.parseInt(strHrs);
@@ -93,18 +97,8 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 	protected void processTheLayoutOperations(Cursor curs) {
 		TableLayout table = (TableLayout) findViewById(R.id.table_stations_id);
 
-		// allow all cells to be shrinked, except the first one (hour label)
-        table.setColumnShrinkable(0, false);
-		table.setColumnShrinkable(1, true);
-		table.setColumnShrinkable(2, true);
-		table.setColumnShrinkable(3, true);
-		table.setColumnShrinkable(4, true);
-		table.setColumnShrinkable(5, true);
-		table.setColumnShrinkable(6, true);
-		table.setColumnShrinkable(7, true);
-		table.setColumnShrinkable(8, true);
-		table.setColumnShrinkable(9, true);
-		table.setColumnShrinkable(10, true);
+		table.setStretchAllColumns(true);
+        table.setShrinkAllColumns(true);
 
         String strStationName = null;
 		curs.getCount();
@@ -144,81 +138,50 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 						
 						if (isWorkday == 1) {
 							Button btn = getTableButton(this.getMinutes(strTime), -1L, null, this.getNextViewHeaderName(), -1L, null, -1L, strStationName, strTime, curs.getLong(nTripID), -1L);
-							Cell cell = new Cell();
-							cell.btn = btn;
-							cell.time = strTime;
+							Cell cell = new Cell(btn, strTime);
 							lstWorkdays.add(cell);
 						}
 						
 						if (isSat == 1) {
 							Button btn = getTableButton(this.getMinutes(strTime), -1L, null, this.getNextViewHeaderName(), -1L, null, -1L, strStationName, strTime, curs.getLong(nTripID), -1L);
-							Cell cell = new Cell();
-							cell.btn = btn;
-							cell.time = strTime;
+							Cell cell = new Cell(btn, strTime);
 							lstSat.add(cell);
 						}
 						
 						if (isSun == 1) {
 							Button btn = getTableButton(this.getMinutes(strTime), -1L, null, this.getNextViewHeaderName(), -1L, null, -1L, strStationName, strTime, curs.getLong(nTripID), -1L);
-							Cell cell = new Cell();
-							cell.btn = btn;
-							cell.time = strTime;
-							lstSun.add(cell);	
+							Cell cell = new Cell(btn, strTime);
+							lstSun.add(cell);
 						}
 						
 				   } while (curs.moveToNext());
 					
 					final String strNow = Utils.getRawCurrentTime();
-					
+
+					// now, group all the hours for three days (workdays, saturady and sunday). We need to find the max minutes within whole week
+                    Object[] result = groupByHours(lstWorkdays);
+                    final Map<Integer, List<Cell>> mapOfWorkdays = (Map<Integer, List<Cell>>) result[0];
+                    final int maxMinutesWorkdays = (int) result[1];
+
+                    result = groupByHours(lstSat);
+                    final Map<Integer, List<Cell>> mapOfSats = (Map<Integer, List<Cell>>) result[0];
+                    final int maxMinutesSats = (int) result[1];
+
+                    result = groupByHours(lstSun);
+                    final Map<Integer, List<Cell>> mapOfSuns = (Map<Integer, List<Cell>>) result[0];
+                    final int maxMinutesSuns = (int) result[1];
+
+                    final int totalMaxMinutes = Math.max(maxMinutesWorkdays, Math.max(maxMinutesSuns, maxMinutesSats));
+
 					// workdays
-					if  (lstWorkdays.size() > 0) {
-						TableRow rowWork = new TableRow(getApplicationContext());					
-						TextView t = new TextView(getApplicationContext());
-						t.setText(R.string.mon_fri);
-						t.setTextSize(COMPLEX_UNIT_DIP, 17);
-						t.setTextColor(getResources().getColor(R.color.dark_gray));
-						
-						// set collSpan to this row cell
-						t.setLayoutParams(trParams);
-						rowWork.addView(t);
-						table.addView(rowWork);
-						
-						this.addTableSegment(lstWorkdays, table, strNow);
-					}
-					
-					// sat
-					if (lstSat.size() > 0) {
-						TableRow rowSat = new TableRow(getApplicationContext());					
-						TextView ts = new TextView(getApplicationContext());
-						ts.setText(R.string.saturday);
-						ts.setTextSize(COMPLEX_UNIT_DIP, 17);
-						ts.setTextColor(getResources().getColor(R.color.dark_gray));
-						
-						// set collSpan to this row cell
-						ts.setLayoutParams(trParams);
-						rowSat.addView(ts);					
-						table.addView(rowSat);
-						
-						this.addTableSegment(lstSat, table, strNow);
-	
-					}
-					
-					if (lstSun.size() > 0) {
-						// sun				
-						TableRow rowSun = new TableRow(getApplicationContext());					
-						TextView tsu = new TextView(getApplicationContext());
-						tsu.setText(R.string.sunday);
-						tsu.setTextSize(COMPLEX_UNIT_DIP, 17);
-						tsu.setTextColor(getResources().getColor(R.color.dark_gray));
-						
-						// set collSpan to this row cell
-						tsu.setLayoutParams(trParams);
-						rowSun.addView(tsu);					
-						table.addView(rowSun);
-						
-						this.addTableSegment(lstSun, table, strNow);
-					}
-				}
+                    renderTableSectionWithHeader(table, trParams, strNow, mapOfWorkdays, totalMaxMinutes, R.string.mon_fri);
+
+                    // sat
+                    renderTableSectionWithHeader(table, trParams, strNow, mapOfSats, totalMaxMinutes, R.string.saturday);
+
+                    // sun
+                    renderTableSectionWithHeader(table, trParams, strNow, mapOfSuns, totalMaxMinutes, R.string.sunday);
+                }
 				curs.close();
 			} catch (Exception e) {	
 				Log.e("ERROR", "Error in loop: " + e);
@@ -226,8 +189,37 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 		}
 		
 	}
-	
-	/**
+
+    /**
+     * Render one section in the table with header (such as "Mon-Fri" and the timetable)
+     *
+     * @param table
+     * @param trParams
+     * @param strNow
+     * @param mapOfCells
+     * @param totalMaxMins
+     * @param headerText
+     */
+    private void renderTableSectionWithHeader(final TableLayout table, final TableRow.LayoutParams trParams, final String strNow, final Map<Integer, List<Cell>> mapOfCells, int totalMaxMins, int headerText) {
+        if (!mapOfCells.isEmpty()) {
+
+            TableRow rowSat = new TableRow(this);
+            TextView ts = new TextView(this);
+            ts.setText(headerText);
+            ts.setTextSize(COMPLEX_UNIT_DIP, 17);
+            ts.setTextColor(ContextCompat.getColor(this, R.color.dark_gray));
+
+            // set collSpan to this row cell
+            ts.setLayoutParams(trParams);
+            rowSat.addView(ts);
+            table.addView(rowSat);
+
+            this.addTableSegment(mapOfCells, totalMaxMins, table, strNow);
+
+        }
+    }
+
+    /**
 	 * {@inheritDoc}
 	 * @throws DatabaseException 
 	 */
@@ -239,7 +231,7 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 			db.open();
 			curs = db.getAllTimesForGivenStation(super.lTransportNumberId, super.lStationId, super.lStationStartId);
 			db.close();
-			startManagingCursor(curs);
+			//startManagingCursor(curs);
 		} catch (SQLException e) {
 			Log.e("ERROR","Error: " + e.getMessage());
 		}
@@ -251,10 +243,15 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 	 * @author Ilja Hamalainen
 	 *
 	 */
-	private class Cell {
-		Button btn;
-		String time;
-	}
+	static class Cell {
+		final Button btn;
+		final String time; // number, such as "829" or "1659", without any delimeter
+
+        public Cell(final Button btn, final String time) {
+            this.btn = btn;
+            this.time = time;
+        }
+    }
 	
 	/**
 	 * Adds one timetable segment to main layout. Timetable usually has three segments:
@@ -262,39 +259,106 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
 	 * 2. Saturdays
 	 * 3. Sundays
 	 * 
-	 * @param lstCells
+	 * @param mapOfCells
 	 * @param table
 	 */
-	private void addTableSegment(final List<Cell> lstCells, TableLayout table, String strNow) {
-		String strHours = "";
-		TableRow row = new TableRow(getApplicationContext());
+	private void addTableSegment(final Map<Integer, List<Cell>> mapOfCells, int maxMins, TableLayout table, final String strNow) {
 
-        for (Cell cell : lstCells) {
-			if (!strHours.equals(this.getHours(cell.time))) {
 
-				// new line for the next hour
-				table.addView(row);
-				row = new TableRow(getApplicationContext());
+        // make sure that we iterate over hours in correct order
+        final List<Integer> listHours = Lists.newArrayList(mapOfCells.keySet());
+        Collections.sort(listHours);
 
-				strHours = this.getHours(cell.time);
-				TextView t = new TextView(getApplicationContext());
-				t.setText(strHours);
-				t.setGravity(Gravity.RIGHT);
-				t.setTypeface(null, Typeface.BOLD);
-				t.setTextSize(COMPLEX_UNIT_DIP, 18);
-				t.setTextColor(getResources().getColor(R.color.dark_blue));
-				row.addView(t);
-			}
-			
-			if (isLaterThanCurrentTime(strNow, cell.time)) {
-				cell.btn.setTextColor(getResources().getColor(R.color.gray));
-			}
+        // one hour is one table row. The first cell is cell (text), the rest are minutes (buttons)
+        for (Integer hour : listHours) {
 
-			// minutes button
-            row.addView(cell.btn);
-		}
-		table.addView(row);
+            TableRow row = this.buildOneHourRow(mapOfCells, maxMins, strNow, hour);
+            table.addView(row);
+        }
 	}
+
+    /**
+     * Build one table row that represents one hour.
+     *
+     * This row has three pars:
+     * 1 - the first cell is a hour (number, simple text)
+     * 2 - the several cells are minutes (number, buttons)
+     * 3 - empty cells as a compensation for width when the row is too short (empty texts)
+     *
+     * @param mapOfCells
+     * @param maxMins
+     * @param strNow
+     * @param hour
+     * @return
+     */
+    private TableRow buildOneHourRow(Map<Integer, List<Cell>> mapOfCells, int maxMins, String strNow, Integer hour) {
+        TableRow row = new TableRow(this);
+
+        // 1. Hour cell:
+        TextView t = new TextView(this);
+        t.setText(hour + "");
+        row.addView(t, new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+
+        // 2. Minutes cells:
+        for (Cell cell : mapOfCells.get(hour)) {
+
+            if (isLaterThanCurrentTime(strNow, cell.time)) {
+                cell.btn.setTextColor(ContextCompat.getColor(this, (R.color.gray)));
+            }
+
+            // minutes button
+            row.addView(cell.btn, new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+        }
+
+        // 3. And here goes the compensation. If we want to make the cells to be equal width, we
+        // need to add empty cells. This way we can make all the rows the same size and as result -
+        // the same width
+        int diff = maxMins - mapOfCells.get(hour).size();
+        if (diff > 0) {
+            for (int i = 0; i < diff; i++) {
+                row.addView(new TextView(this), new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+            }
+        }
+        return row;
+    }
+
+    /**
+     * We need to group all the times by hours to correctly display them in the table with times
+     *
+     * @return Two objects:
+     *    [0] - Map<Integer, List<Cell>> - map of cells, grouped by hour
+     *    [1] - max minutes (cells, trips) in one hour
+     */
+	static Object[] groupByHours(final List<Cell> cells) {
+
+	    if (cells.isEmpty())
+	        return new Object[]{ ImmutableMap.of(), 0 };
+
+	    int maxMinsInHours = 0;
+        final Map<Integer, List<Cell>> mapCells = Maps.newHashMap();
+
+        // iterate over cells and group by hour
+        for (Cell cell : cells) {
+            final Integer hour = Integer.parseInt(getHours(cell.time));
+            if (mapCells.containsKey(hour)) {
+
+                // The current hour exists in a map, then update the cells list
+                mapCells.get(hour).add(cell);
+
+                // update the max hours if this line is too long
+                if (mapCells.get(hour).size() > maxMinsInHours) {
+                    maxMinsInHours = mapCells.get(hour).size();
+                }
+            }
+            else{
+
+                // there is no such hour in the map, lets create new record
+                mapCells.put(hour, Lists.newArrayList(cell));
+            }
+        }
+
+        return new Object[]{ ImmutableMap.copyOf(mapCells), maxMinsInHours };
+    }
 	
 	private boolean isLaterThanCurrentTime(String currentTime, String time) {
 		return currentTime.compareTo(time.length() == 3 ? Constants.STR_ZERO + time : time) > 0;

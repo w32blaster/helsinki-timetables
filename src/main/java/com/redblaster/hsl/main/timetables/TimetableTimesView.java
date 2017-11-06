@@ -1,8 +1,5 @@
 package com.redblaster.hsl.main.timetables;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -10,6 +7,9 @@ import com.redblaster.hsl.common.Constants;
 import com.redblaster.hsl.layout.items.Breadcrumb;
 import com.redblaster.hsl.main.AbstractTimesView;
 import com.redblaster.hsl.main.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TimetableTimesView extends AbstractTimesView {
 	

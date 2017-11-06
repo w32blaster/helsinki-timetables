@@ -5,9 +5,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.style.UnderlineSpan;
-import android.util.TypedValue;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.redblaster.hsl.common.Constants;
@@ -65,7 +62,7 @@ public class AbstractTimetableView extends AbstractView {
     	
     	if (0 < vehicleType) {
 			Vehicle vehicle = Vehicle.getById(vehicleType);
-			drawableVehicleType = getResources().getDrawable(vehicle.getIco());
+			drawableVehicleType = ContextCompat.getDrawable(this, vehicle.getIco());
     	}
 		
     	return addHeaderPanel(drawableVehicleType, strHeaderText);
@@ -102,7 +99,7 @@ public class AbstractTimetableView extends AbstractView {
 		lParamsText.leftMargin = 10;
 		text.setLayoutParams(lParamsText);
 		text.setTypeface(null, Typeface.BOLD);
-		text.setTextColor(getResources().getColor(R.color.dark_blue));
+		text.setTextColor(ContextCompat.getColor(this, R.color.dark_blue));
 		linearLayoutHeader.addView(text);
 		
 
@@ -171,21 +168,15 @@ public class AbstractTimetableView extends AbstractView {
      * @return
      */
     protected Button getAbstractLinkButton(String strText) {
-    	Button btn = new Button(getApplicationContext());
-    	
-    	// set underlined text
-		SpannableString content = new SpannableString(strText);
-		content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-		btn.setText(content);
-		//btn.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
-		btn.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-		
+    	Button btn = new Button(this);
+
+		btn.setText(strText);
+
 		//set other params
-		btn.setTextColor(getResources().getColor(R.color.dark_blue));
+		btn.setTextColor(ContextCompat.getColor(this, R.color.dark_blue));
 		btn.setBackgroundColor(Color.TRANSPARENT);
-		//btn.setGravity(Gravity.LEFT);
-		//btn.setPadding(10, 15, 10, 15);
-		
+		btn.setPadding(1, 1, 1, 1);
+
 		return btn;
     }
     
@@ -199,12 +190,12 @@ public class AbstractTimetableView extends AbstractView {
     		final long tripId, final String strTrip, final long stationID, final String stationName, final String time, final long tripOneId, final long stationStartID) {
     	
     	final Button btn = this.getAbstractLinkButton(strText);
-		btn.setOnClickListener(new OnClickListener() {
+
+        btn.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				btn.setBackgroundColor(getResources().getColor(R.color.light_gray));
-				
+
 				Intent intent = new Intent();
 				intent.setClass(getApplicationContext(), getNextActivityClassName());
 				intent.putExtra(Constants.STR_VEHICLE_TYPE, nVehicleType);
