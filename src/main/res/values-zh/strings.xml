@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">赫爾辛基時刻表</string>
+    <string name="vehicle_type_bus">巴士</string>
+    <string name="vehicle_type_train">火車</string>
+    <string name="vehicle_type_metro">地鐵</string>
+    <string name="vehicle_type_tram">電車</string>
+    <string name="vehicle_type_farry">渡輪</string>
+    <string name="vehicle_type_u_lines">U線</string>
+    <string name="bookmarks">書籤</string>
+    <string name="menu_update">更新</string>
+
+    <string name="header_trips_directions">到%路線</string>
+    <string name="header_trips">所有%路線</string>
+    <string name="header_stations">%所有站名，路線</string>
+    <string name="header_times">%時刻表，站名%</string>
+    <string name="header_one_trip">%所有停靠站</string>
+    <string name="cancel">取消</string>
+    <string name="back">返回</string>
+    <string name="next">下一個</string>
+    <string name="finish">結束</string>
+    <string name="wizard">使用教學</string>
+    <string name="wizard_page_one">歡迎使用赫爾辛基時刻表</string>
+    <string name="wizard_page_one_text">歡迎使用赫爾辛基時刻表!這個使用教學可以幫您使用這個應用程式</string>
+    <string name="wizard_page_two_text">首先，您需要先下載赫爾辛基時刻表資料庫。請選擇您喜好的下載方式</string>
+    <string name="wizard_page_two_radio_auto_text">自動
+讓應用程式自動下載資料庫</string>
+    <string name="wizard_page_two_radio_manu_text">手動
+您可以自己下載資料庫並放在SD儲存卡</string>
+    <string name="wizard_page_two">載入資料方式</string>
+    <string name="wizard_page_three">載入</string>
+    <string name="wizard_import_request_metadata">要求元數據</string>
+    <string name="wizard_import_disk_space">磁碟片間</string>
+    <string name="wizard_import_downloaded">下載 </string>
+    <string name="wizard_import_downloading">下載中</string>
+    <string name="wizard_import_verify">驗證中</string>
+    <string name="wizard_import_extracting">提取中</string>
+    <string name="wizard_import_ok">[OK]</string>
+    <string name="wizard_import_error">錯誤</string>
+    <string name="wizard_import_finished_success">下載成功。您可以繼續使用應用程式</string>
+    <string name="wizard_import_finished_failure">下載端錯誤。下載失敗</string>
+    <string name="wizard_page_automatically_imprting_chosen">您已選擇自動下載資料庫 \n</string>
+    <string name="wizard_page_automatically_imprting">應用程式會自動下載資料庫。請確認您的手機已連接WIFI無線網路或手機無限制行動數據，因為資料庫檔案大下載需要高網路流量</string>
+    <string name="wizard_page_manally_imprting">您可以選擇手動下載資料庫。您可以自行從網頁下載檔案放在SD儲存卡。請拜訪以下網頁
+http://hsl.2rooms.net/download.html</string>
+    <string name="wizard_page_three_button_start">開始載入</string>
+    <string name="wizard_page_four">小工具</string>
+    <string name="wizard_page_four_text">別忘了可以使用我們的小工具! 首先您需要先建立一個新書籤，然後將它加到您的桌面</string>
+    <string name="wizard_page_five">使用教學結束</string>
+    <string name="wizard_page_five_finished">結束
+現在您可以每天使用赫爾辛基時刻表應用程式。
+祝好運!</string>
+    <string name="wizard_page_five_need_importing">使用教學結束
+當您按下"結束"鍵，就會離開應用程式。然後您需要將資料庫檔案移至SD儲存卡，下次再打開應用程式資料就會在裡面，您就可以每天使用。
+祝好運</string>
+    <string name="processing">處理中</string>
+    <string name="loading_descr">進行詢問</string>
+    <string name="mon_fri">星期一至星期五</string>
+    <string name="saturday">星期六</string>
+    <string name="sunday">星期日</string>
+    <string name="unzip_process_title">提取</string>
+    <string name="unzip_process_descr">請找到在"hsl"檔案夾的資料庫，當應用程式在提取資料時，需要一些時間。</string>
+    <string name="unzip_result_fail_extract">對不起，提取資料錯誤(提取資料時失敗)</string>
+    <string name="unzip_result_fail_in">對不起，提取資料錯誤(開啟檔案時失敗)</string>
+    <string name="unzip_result_ok">成功提取檔案</string>
+    <string name="search_field_hint">搜尋型態</string>
+    <string name="search">搜尋</string>
+    <string name="stations_list_of_trips_header">%站牌所有可能路線</string>
+    <string name="menu_add_bookmark">加入新書籤</string>
+    <string name="menu_delete_bookmark">刪除</string>
+    <string name="bookmarks_name">自訂書籤名稱</string>
+    <string name="bookmarks_image">自訂與此書籤相關圖案</string>
+    <string name="bookmarks_you_dont_have_bookmarks">您還未有任何書籤。加入新書籤，請從選單選擇" 加入書籤"或請按以下按鍵</string>
+    <string name="dialog_confirm_delete_bookmarks">您要刪除%書籤嗎？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="widget_there_is_no_data">您未無儲存任何書籤。請到HSL應用程式建立新書籤</string>
+    <string name="widget_bookmark_is_empty">此時這個書籤沒有時刻表</string>
+    <string name="err_msg_db_corrupted">資料庫已損壞。有可能時下載錯誤或您的SD儲存卡損壞造成。請手移除資料庫檔案夾然後再重新下載。您可在以下網頁找到教導方式
+
+http://hsl.2rooms.net/download.html</string>
+    <string name="err_msg_db_file_adsent">沒有資料庫檔案</string>
+    <string name="err_msg_no_sdcard">SD儲存卡未安裝</string>
+    <string name="err_msg_cant_open_db">無法打開資料庫</string>
+    <string name="err_msg_sql_error">SQL錯誤</string>
+    <string name="error">錯誤</string>
+    <string name="metadata_header">有效資料庫資訊</string>
+    <string name="metadata_export_date">時刻表日期</string>
+    <string name="metadata_db_size">資料庫容量</string>
+    <string name="metadata_err">無法接收資料庫資訊</string>
+    <string name="metadata_warn_size_big">警告!此資料庫可能含有夏季和冬季時刻表。建議您下星期再下載更新資料庫</string>
+    <string name="unzip_result_fail_do_you_want">您想刪除在SD儲存卡上的損壞檔案嗎？</string>
+    <string name="are_you_sure_interrupt_downloading">您將中斷戴入。下載檔案將被移除。確定嗎？</string>
+</resources>
