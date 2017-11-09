@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 import static android.util.TypedValue.COMPLEX_UNIT_DIP;
+import static java.lang.Math.max;
 
 /**
  * This is abstract view of times. It shows table of times like reittiopas book has
@@ -171,7 +172,9 @@ abstract public class AbstractTimesView extends AbstractTimetableView {
                     final Map<Integer, List<Cell>> mapOfSuns = (Map<Integer, List<Cell>>) result[0];
                     final int maxMinutesSuns = (int) result[1];
 
-                    final int totalMaxMinutes = Math.max(maxMinutesWorkdays, Math.max(maxMinutesSuns, maxMinutesSats));
+                    // choose the maximum amount of columns, to draw equal table rows. If there are too few
+                    // times for the current trip, then use 6 columns (because table with few columns looks ugly)
+                    final int totalMaxMinutes = max(6, max(maxMinutesWorkdays, max(maxMinutesSuns, maxMinutesSats)));
 
 					// workdays
                     renderTableSectionWithHeader(table, trParams, strNow, mapOfWorkdays, totalMaxMinutes, R.string.mon_fri);
