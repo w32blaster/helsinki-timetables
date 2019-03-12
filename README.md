@@ -6,6 +6,13 @@
 
 The application uses [Reittiopas API][3] to download the full data and generate the database to be used offline. The full API documentation is [here][4].
 
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
+     alt="Get it on Google Play"
+     height="80">](https://play.google.com/store/apps/details?id=com.redblaster.hsl.main)
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/com.redblaster.hsl.main/)
+
 ![image alt][2]
 
 
