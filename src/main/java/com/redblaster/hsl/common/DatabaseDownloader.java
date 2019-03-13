@@ -89,13 +89,8 @@ public class DatabaseDownloader {
         	// get screen resolution
         	DisplayMetrics metrics = new DisplayMetrics();
         	windowManager.getDefaultDisplay().getMetrics(metrics);
-        	
-        	// generate URL to server and add locale and screen resolution for the Google Analytics
-        	final String strURL = String.format(Constants.URL_SITE + Constants.URL_ARCHIVE_URL, Locale.getDefault().toString().replace('_', '-'), 
-        			metrics.heightPixels, 
-        			metrics.widthPixels);
-   
-        	URL url = new URL(strURL);
+
+        	URL url = new URL(Constants.URL_SITE + Constants.URL_ARCHIVE_URL);
             URLConnection conexion = url.openConnection();
             conexion.connect();
             // this will be useful so that you can show a tipical 0-100% progress bar

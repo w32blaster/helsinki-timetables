@@ -76,9 +76,9 @@ public interface Constants {
 	short DOWNLOAD_AUTOMATICALLY = 1;
 	short DOWNLOAD_MANUALLY = 2;
 
-	String URL_SITE = "http://hsl.2rooms.net/downloads/";
+	String URL_SITE = "https://hsl.w32blaster.me/";
 	String URL_METADATA_FILE = "version.xml";
-	String URL_ARCHIVE_URL = "ga/download.php?locale=%1$s&res=%2$dx%3$d";
+	String URL_ARCHIVE_URL = "hsl.gz";
 
 	String STR_HANDLER_MESSAGE_COMMAND = "command";
 	String STR_HANDLER_MESSAGE_VALUE = "value";
